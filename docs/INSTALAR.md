@@ -1,6 +1,6 @@
 # Instalar Android TV en la Batocera
 
-Guía de la versión **1.0.0**. Son los pasos que se hicieron en el equipo de prueba (Dell Inspiron 3493, Batocera 43.1).
+Guía de la versión **1.1.0**. Son los pasos que se hicieron en el equipo de prueba (Dell Inspiron 3493, Batocera 43.1).
 Lo que todavía no se probó está marcado **(sin probar)**.
 
 Todos los comandos de la Batocera se escriben por SSH, como `root`.
@@ -50,8 +50,8 @@ El `init` de esta compilación acepta `ROOT=` (la partición), `SRC=` (la carpet
 ## 3. Bajar este proyecto a la Batocera
 
 ```bash
-cd /tmp && curl -L https://github.com/RichardS-Groove/batocera-android-tv-rs-groove/archive/refs/tags/v1.0.0.tar.gz | tar -xz
-P=/tmp/batocera-android-tv-rs-groove-1.0.0
+cd /tmp && curl -L https://github.com/RichardS-Groove/batocera-android-tv-rs-groove/archive/refs/tags/v1.1.0.tar.gz | tar -xz
+P=/tmp/batocera-android-tv-rs-groove-1.1.0
 ```
 
 ## 4. El cargador de Android (GRUB) y la entrada UEFI
@@ -182,7 +182,8 @@ archivo idéntico, byte por byte, al que funciona.
 
 1. pone `BootNext` = la primera entrada del orden UEFI (la Batocera), así cualquier reinicio vuelve a la Batocera;
 2. espera a que Android termine de arrancar y prende ADB por red en el puerto `5555`;
-3. escucha el joystick: **Select + Start** juntos → reinicia → vuelve la Batocera.
+3. escucha el joystick: **Select + Start** juntos → reinicia → vuelve la Batocera;
+4. **palanca derecha** arriba o abajo → sube o baja el volumen (sostenida, repite unas 4 a 5 veces por segundo).
 
 Registro: `/userdata/android-tv/data/rsgroove/arranque.log`.
 
@@ -207,7 +208,23 @@ adb shell 'setprop persist.sys.locale es-AR; settings put system time_12_24 24; 
 
 La zona horaria ya la fija el `grub.cfg` (paso 4).
 
-## 11. Google Play
+## 11. Teclado de la notebook en español
+
+Android 14 pone «Inglés (EE. UU.)» al teclado de la notebook y en Android TV no hay pantalla para cambiarlo. Con
+Android prendido:
+
+```bash
+adb root
+adb push "$P/herramientas/teclado-espanol.sh" /data/local/tmp/
+adb shell sh /data/local/tmp/teclado-espanol.sh                           # Español (Latinoamérica)
+# adb shell sh /data/local/tmp/teclado-espanol.sh keyboard_layout_spanish  # Español (España)
+```
+
+Pasa Android al modo clásico (`settings_new_keyboard_ui=false`), donde el diseño queda guardado, y reinicia la
+interfaz (unos 30 s). Guarda una copia de la configuración anterior en `/data/rsgroove/`. Se nota en la ñ, los
+acentos y la `@` (AltGr + Q en Latinoamérica).
+
+## 12. Google Play
 
 Ver [GOOGLE.md](GOOGLE.md).
 

@@ -41,6 +41,16 @@ Para verla y manejarla con el mouse: [scrcpy](https://github.com/Genymobile/scrc
 - **PowerShell**: no redirijas binarios con `>` (rompe los PNG); usá `adb pull`.
 - Después de `adb root`, ADB se reinicia: volvé a hacer `adb connect`.
 
+## Volver a lanzar `arranque.sh` sin reiniciar
+
+Después de cambiar `arranque.sh`, **no** lo lances a mano desde `adb shell`: el script reinicia el ADB y Android
+cierra todo lo que salió de ADB, incluido el script. Reiniciá el servicio que lo lanza en el arranque:
+
+```bash
+adb shell setprop ctl.restart kmsg_fetch      # la conexión se corta unos segundos: adb connect de nuevo
+adb shell 'ps -A -o PID,ARGS | grep -E "arranque.sh|getevent -ql"'
+```
+
 ## Apagar el ADB por red
 
 Si no lo querés, borrá en `arranque.sh` las líneas `setprop service.adb.tcp.port 5555` y `setprop ctl.restart adbd`.

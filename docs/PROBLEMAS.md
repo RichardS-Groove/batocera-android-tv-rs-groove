@@ -53,6 +53,18 @@ SafetyNet, DroidGuard en «Embedded»). Ver [GOOGLE.md](GOOGLE.md).
 La Play Store era solo ARM y usaba casi toda la CPU por el traductor. **Arreglo:** Play Store de Android TV con
 x86_64, como actualización. Ver [GOOGLE.md](GOOGLE.md).
 
+## El teclado de la notebook escribe mal (ñ, acentos, símbolos)
+
+Android 14 elige el diseño del teclado físico según el idioma del teclado en pantalla y, si no encuentra uno, pone
+«Inglés (EE. UU.)». En Android TV no hay pantalla para cambiarlo. Editar a mano `selected-keyboard-layout` en
+`input-manager-state.xml` **no sirve**: es un resumen que Android rearma al arrancar. **Arreglo:**
+`herramientas/teclado-espanol.sh` (modo clásico + diseño guardado). Ver [INSTALAR.md](INSTALAR.md), paso 11.
+
+## La palanca derecha cambia el volumen dentro de un juego
+
+Es a propósito (como en la Batocera). Si un juego de Android usa la palanca derecha, también cambia el volumen. Para
+apagarlo, en `arranque.sh` borrá el bloque `ABS_RZ)`.
+
 ## Katniss gasta CPU
 
 `adb shell pm disable-user com.google.android.katniss`.

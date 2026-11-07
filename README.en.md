@@ -1,6 +1,6 @@
 # Batocera Android TV · RS Groove
 
-![Version](https://img.shields.io/badge/version-1.0.0-7b2cbf)
+![Version](https://img.shields.io/badge/version-1.1.0-7b2cbf)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-e0343d)](LICENSE.md)
 ![Batocera](https://img.shields.io/badge/Batocera-43-e0343d)
 ![Android TV](https://img.shields.io/badge/LineageOS%2021-Android%20TV%2014-3ddc84)
@@ -23,6 +23,8 @@ Made by **Richard Campos (RS Groove)**.
   entries too.
 - **Back to Batocera with Select + Start** (together), or by rebooting Android.
 - **Batocera-style buttons:** Cross (X) accepts, Circle goes back, Select goes to the Android home.
+- **Volume on the right stick**, like Batocera: up raises it, down lowers it (hold to repeat).
+- **Laptop keyboard in Spanish** (Latin America or Spain) with a one-command script.
 - **Batocera is not touched.** Everything lives in `/userdata/android-tv`, one menu folder and its own UEFI entry, so
   Batocera updates do not remove it.
 - **Time zone and language** set from boot (Argentina on the test machine; one line to change).
@@ -78,6 +80,7 @@ Step-by-step guide with the exact commands used (Spanish): **[docs/INSTALAR.md](
 | Go back to Batocera | **Select + Start** together, or *Restart* from Android |
 | Accept / go back | **Cross (X)** accepts · **Circle** goes back |
 | Android home | **Select** |
+| Volume up / down | **Right stick** up or down (hold to keep going) |
 | Pick the screen manually | Android boot menu: «solo la tele» (TV only) or «solo la pantalla de la notebook» (laptop only) |
 
 ## Not included

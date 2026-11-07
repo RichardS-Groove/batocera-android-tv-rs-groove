@@ -19,7 +19,7 @@ sequenceDiagram
     I->>I: 9-rsgroove: monta rsgroove/init.sh sobre /system/etc/init.sh
     I->>A: arranca Android (system.img + carpeta data/)
     A->>U: arranque.sh: BootNext = Batocera
-    A->>A: ADB por red :5555 y atajo Select + Start
+    A->>A: ADB por red :5555, atajo Select + Start y volumen con la palanca derecha
     A->>U: Select + Start → reinicio
     U->>B: arranca la Batocera
 ```
@@ -39,7 +39,7 @@ sequenceDiagram
 | `fstab.android` | `/userdata/android-tv/` | Qué monta el initrd y desde dónde. |
 | `scripts/9-rsgroove` | `/userdata/android-tv/scripts/` | El initrd carga `scripts/*` con `source`; este define `post_detect()` y monta nuestro `init.sh`. |
 | `rsgroove/init.sh` | `/userdata/android-tv/rsgroove/` | El `init.sh` de Android + 2 líneas que lanzan `arranque.sh`. Lo genera `herramientas/generar-init.sh`. |
-| `arranque.sh` | `/userdata/android-tv/data/rsgroove/` (= `/data/rsgroove/`) | Corre como root en cada arranque: `BootNext`, ADB por red, atajo Select + Start. |
+| `arranque.sh` | `/userdata/android-tv/data/rsgroove/` (= `/data/rsgroove/`) | Corre como root en cada arranque: `BootNext`, ADB por red, atajo Select + Start y volumen con la palanca derecha (`ABS_RZ` → `input keyevent VOLUME_UP/DOWN`). |
 | `Vendor_2563_Product_0523.kl` | `/data/system/devices/keylayout/` | Botones como en la Batocera para el joystick ShanWan. |
 
 ## Por qué sobrevive a las actualizaciones de la Batocera

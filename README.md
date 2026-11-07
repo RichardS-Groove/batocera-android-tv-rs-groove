@@ -1,6 +1,6 @@
 # Batocera Android TV · RS Groove
 
-![Versión](https://img.shields.io/badge/versi%C3%B3n-1.0.0-7b2cbf)
+![Versión](https://img.shields.io/badge/versi%C3%B3n-1.1.0-7b2cbf)
 [![Licencia](https://img.shields.io/badge/licencia-CC%20BY--NC--SA%204.0-e0343d)](LICENSE.md)
 ![Batocera](https://img.shields.io/badge/Batocera-43-e0343d)
 ![Android TV](https://img.shields.io/badge/LineageOS%2021-Android%20TV%2014-3ddc84)
@@ -23,6 +23,8 @@ Hecho por **Richard Campos (RS Groove)**.
   notebook. También hay entradas para elegirla a mano.
 - **Vuelta a la Batocera con Select + Start** (juntos), o reiniciando Android.
 - **Botones como en la Batocera:** Cruz (X) acepta, Círculo vuelve, Select va al inicio de Android.
+- **Volumen con la palanca derecha**, como en la Batocera: arriba sube, abajo baja (sostenida, repite).
+- **Teclado de la notebook en español** (Latinoamérica o España), con una receta de un solo comando.
 - **No toca la Batocera.** Todo vive en `/userdata/android-tv`, en una carpeta del menú y en una entrada UEFI propia.
   Las actualizaciones de la Batocera no lo borran.
 - **Hora e idioma** fijados desde el arranque (en este equipo, Argentina; se cambia en una línea).
@@ -82,6 +84,8 @@ En corto:
 | Volver a la Batocera | **Select + Start** juntos, o *Reiniciar* desde Android |
 | Aceptar / volver | **Cruz (X)** acepta · **Círculo** vuelve |
 | Ir al inicio de Android | **Select** |
+| Subir o bajar el volumen | **Palanca derecha** arriba o abajo (sostenida, sigue subiendo o bajando) |
+| Escribir con el teclado de la notebook | Ya está en español (ñ, acentos, `@` con AltGr + Q): ver [docs/INSTALAR.md](docs/INSTALAR.md), paso 11 |
 | Elegir la pantalla a mano | En el menú de arranque de Android: «solo la tele» o «solo la pantalla de la notebook» |
 
 ## Controlar Android desde la PC
@@ -107,9 +111,10 @@ efi/                                       → va a la partición FAT32 del carg
 android-tv/                                → va a /userdata/android-tv
   fstab.android                            usa system.img (sistema modificable)
   scripts/9-rsgroove                       monta nuestro init.sh al arrancar
-  data/rsgroove/arranque.sh                BootNext, ADB por red, atajo Select + Start
+  data/rsgroove/arranque.sh                BootNext, ADB por red, atajo Select + Start, volumen con la palanca derecha
   data/system/devices/keylayout/Vendor_2563_Product_0523.kl   botones como en la Batocera
 herramientas/generar-init.sh               genera nuestro init.sh desde el original de Android
+herramientas/teclado-espanol.sh            teclado de la notebook en español (Android 14)
 docs/                                      guías y fotos
 ```
 

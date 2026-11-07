@@ -3,6 +3,26 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versiones: `MAYOR.MENOR.ARREGLO`
 (cambio grande / mejora nueva / arreglo chico).
 
+## [1.1.0] — 2026-11-07
+
+### Agregado
+
+- **Volumen con la palanca derecha**, como en la Batocera (`arranque.sh`): arriba sube, abajo baja; sostenida repite
+  (unas 4 a 5 veces por segundo; cada paso tarda ~175 ms). Zona muerta: de 60 a 195 sobre 0–255.
+- **`herramientas/teclado-espanol.sh`**: teclado de la notebook en español (Latinoamérica por defecto, o España).
+  Android 14 ponía «Inglés (EE. UU.)» y lo volvía a poner al arrancar; pasa al modo clásico, donde el diseño queda
+  guardado.
+- Documentación: cómo volver a lanzar `arranque.sh` sin reiniciar (`setprop ctl.restart kmsg_fetch`), el teclado,
+  y que la palanca derecha también cambia el volumen dentro de los juegos.
+
+### Cómo se probó
+
+- Volumen: con movimientos simulados de la palanca en el Android real (arriba 0,8 s → 4 pasos, abajo 0,6 s → 3
+  pasos, al soltar para) y ya activo en el equipo. Falta la prueba con la palanca de verdad.
+- Teclado: el diseño «Español (Latinoamérica)» quedó guardado después de reiniciar la interfaz (antes volvía a
+  inglés). La receta se probó frenando ante un diseño que no existe; la parte que escribe repite los comandos que
+  se usaron a mano. Falta que la persona escriba con el teclado.
+
 ## [1.0.0] — 2026-11-07
 
 Primera versión publicada. Todo probado en una Dell Inspiron 3493 con Batocera 43.1 y LineageOS 21 Android TV
