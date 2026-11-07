@@ -97,6 +97,24 @@ adb shell pm uninstall-system-updates com.android.vending
 En el registro quedan avisos como «cannot get user data for accounts of type com.google» y «More than one auth
 provider»: son de microG con la Play Store y, en el equipo de prueba, no tuvieron efecto visible.
 
+## Chrome y Google Drive (versiones de celular)
+
+Esta compilación es «solo TV» (`android.software.leanback_only`): la Play Store muestra solo apps hechas para tele, y
+**Google no publica Chrome ni Drive para Android TV**. Se instalan las versiones oficiales de celular desde APKMirror,
+comprobando huella y firma igual que la Play Store:
+
+| App | Variante | sha256 del archivo | Firma | Corre como |
+| --- | --- | --- | --- | --- |
+| Chrome 157.0.8103.46 | APK `x86`, Android 10+ (262.133.409 bytes) | `fdf6b5600a3c964f90a698c95830e509c228766bb26e3a662603968b8ec3630f` | Google `f0fd6c5b…db83` (v2 y v3) | `x86`, sin traductor |
+| Drive 2.26.447.0 | APK universal, Android 8+ (131.916.009 bytes) | `e1a53ac11f3018fb695eecd40180fc540fbcd73d5258cda8f653bbbf934cd4a3` | Google `f0fd6c5b…db83` | `x86_64` |
+
+- Esa versión de Chrome no tenía variante `x86_64`; la `x86` corre igual sin traductor. **No pidió** la biblioteca
+  Trichrome.
+- Chrome abre en español y ya ve la cuenta de microG (la sincronización la elige cada uno).
+- **No se actualizan solas** desde la Play Store de la tele: para actualizar, bajar la nueva y `adb install -r`.
+- Se manejan mejor con touchpad y teclado que con el joystick.
+- Para que aparezcan en el inicio RS Groove: `library_apps` del tema (ver [INICIO.md](INICIO.md)).
+
 ## Aurora Store (opcional)
 
 Aurora (<https://f-droid.org/packages/com.aurora.store/>) **no usa** la cuenta de microG: tiene su propio ingreso

@@ -3,6 +3,28 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versiones: `MAYOR.MENOR.ARREGLO`
 (cambio grande / mejora nueva / arreglo chico).
 
+## [1.2.0] — 2026-11-07
+
+### Agregado
+
+- **Nombre nuevo: «Android TV RS Groove»** (título del proyecto y nombre del equipo en la red y en el celular).
+- **Inicio RS Groove** ([docs/INICIO.md](docs/INICIO.md)): el inicio estilo Apple TV de CleanYourTV (commit `d451b17`,
+  armado en la PC, instalado sin apagar el inicio anterior) + **tema propio** `tema/rs-groove/`: 18 imágenes de uso
+  libre que cambian cada minuto en orden aleatorio, barra con YouTube, Chrome, Drive, Play Store y Aurora, Biblioteca
+  de aplicaciones.
+- **El celular como control remoto** ([docs/CELULAR.md](docs/CELULAR.md)): el Android TV Remote Service no tenía
+  permiso de Bluetooth y no aceptaba celulares; se le dio y abre sus puertos 6466 y 6467.
+- **Chrome 157 y Google Drive 2.26** (versiones de celular), con huella y firma de Google comprobadas
+  ([docs/GOOGLE.md](docs/GOOGLE.md)).
+- Problemas nuevos con su arreglo en [docs/PROBLEMAS.md](docs/PROBLEMAS.md).
+
+### Cómo se probó
+
+- Inicio: instalado y puesto como inicio en el equipo de prueba; fotos con tres imágenes distintas en tres minutos;
+  Chrome y Drive en la barra después de sumar `library_apps`.
+- Control remoto: el servicio abrió 6466 y 6467 y el permiso quedó dado; falta emparejar un celular.
+- Chrome abrió en español y vio la cuenta; Drive abrió.
+
 ## [1.1.1] — 2026-11-07
 
 ### Arreglado

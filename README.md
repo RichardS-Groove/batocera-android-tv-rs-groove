@@ -1,19 +1,19 @@
-# Batocera Android TV · RS Groove
+# Android TV RS Groove
 
-![Versión](https://img.shields.io/badge/versi%C3%B3n-1.1.1-7b2cbf)
+![Versión](https://img.shields.io/badge/versi%C3%B3n-1.2.0-7b2cbf)
 [![Licencia](https://img.shields.io/badge/licencia-CC%20BY--NC--SA%204.0-e0343d)](LICENSE.md)
 ![Batocera](https://img.shields.io/badge/Batocera-43-e0343d)
 ![Android TV](https://img.shields.io/badge/LineageOS%2021-Android%20TV%2014-3ddc84)
 
 **Español** · [English](README.en.md)
 
-Android TV en la misma PC que tu Batocera, **con su propia entrada en el menú**. La elegís con el joystick, la PC
+Android TV en la misma PC que tu **Batocera**, **con su propia entrada en el menú**. La elegís con el joystick, la PC
 reinicia en Android TV nativo (sin máquina virtual, con toda la potencia del equipo) y, cuando terminás, apretás
 **Select + Start** y volvés a la Batocera.
 
 Hecho por **Richard Campos (RS Groove)**.
 
-![Inicio de Android TV con TV Detox](docs/fotos/inicio-android-tv.png)
+![Inicio RS Groove: imágenes que cambian cada minuto](docs/fotos/inicio-rs-groove.png)
 
 ## Qué hace
 
@@ -25,6 +25,11 @@ Hecho por **Richard Campos (RS Groove)**.
 - **Botones como en la Batocera:** Cruz (X) acepta, Círculo vuelve, Select va al inicio de Android.
 - **Volumen con la palanca derecha**, como en la Batocera: arriba sube, abajo baja (sostenida, repite).
 - **Teclado de la notebook en español** (Latinoamérica o España), con una receta de un solo comando.
+- **Inicio «RS Groove»:** el inicio estilo Apple TV de CleanYourTV con un tema propio de **18 imágenes que cambian
+  cada minuto** (anime, paisajes y la Tierra desde el espacio). Ver [docs/INICIO.md](docs/INICIO.md).
+- **El celular como control remoto** con la app Google TV (con el arreglo que necesitó). Ver
+  [docs/CELULAR.md](docs/CELULAR.md).
+- **Chrome y Google Drive** (versiones de celular, que Google no publica para TV). Ver [docs/GOOGLE.md](docs/GOOGLE.md).
 - **No toca la Batocera.** Todo vive en `/userdata/android-tv`, en una carpeta del menú y en una entrada UEFI propia.
   Las actualizaciones de la Batocera no lo borran.
 - **Hora e idioma** fijados desde el arranque (en este equipo, Argentina; se cambia en una línea).
@@ -74,7 +79,8 @@ En corto:
    este repositorio, y crear la entrada UEFI «Android TV» **fuera del orden de arranque**.
 4. Copiar la entrada del menú (`batocera/`) a `/userdata`.
 5. Primer arranque, hacer el sistema modificable, sumar `arranque.sh`, el `init.sh` propio y los botones.
-6. Google Play: [docs/GOOGLE.md](docs/GOOGLE.md).
+6. Google Play, Chrome y Drive: [docs/GOOGLE.md](docs/GOOGLE.md).
+7. El inicio RS Groove: [docs/INICIO.md](docs/INICIO.md). El celular como control: [docs/CELULAR.md](docs/CELULAR.md).
 
 ## Uso diario
 
@@ -86,6 +92,8 @@ En corto:
 | Ir al inicio de Android | **Select** |
 | Subir o bajar el volumen | **Palanca derecha** arriba o abajo (sostenida, sigue subiendo o bajando) |
 | Escribir con el teclado de la notebook | Ya está en español (ñ, acentos, `@` con AltGr + Q): ver [docs/INSTALAR.md](docs/INSTALAR.md), paso 11 |
+| Manejarlo desde el celular | App **Google TV** → Control remoto → **Android TV RS Groove** |
+| Sumar o sacar apps del inicio | Botón **Biblioteca de aplicaciones** (al final de las filas) |
 | Elegir la pantalla a mano | En el menú de arranque de Android: «solo la tele» o «solo la pantalla de la notebook» |
 
 ## Controlar Android desde la PC
@@ -115,11 +123,13 @@ android-tv/                                → va a /userdata/android-tv
   data/system/devices/keylayout/Vendor_2563_Product_0523.kl   botones como en la Batocera
 herramientas/generar-init.sh               genera nuestro init.sh desde el original de Android
 herramientas/teclado-espanol.sh            teclado de la notebook en español (Android 14)
+tema/rs-groove/                            tema del inicio: config.json + 18 imágenes (CC0 y dominio público)
 docs/                                      guías y fotos
 ```
 
-**No incluye** la ISO de Android, `system.img`, la Play Store, microG ni otros archivos que no son nuestros: solo los
-enlaces oficiales y sus huellas sha256. Tampoco claves, llaves de ADB ni datos de ninguna cuenta.
+**No incluye** la ISO de Android, `system.img`, la Play Store, microG, Chrome, Drive ni el inicio CleanYourTV armado:
+solo los enlaces oficiales y sus huellas sha256. Las imágenes del tema sí van, porque son de uso libre (ver
+[tema/rs-groove/CREDITOS.md](tema/rs-groove/CREDITOS.md)). Tampoco claves, llaves de ADB ni datos de ninguna cuenta.
 
 ## Apps
 
@@ -138,5 +148,5 @@ Cada mejora o arreglo sale con versión nueva (`MAYOR.MENOR.ARREGLO`) y su detal
   - 📝 Dando crédito a Richard Campos (RS Groove) con un enlace a este repositorio, indicando los cambios y publicando
     con la misma licencia.
   - 🚫 Sin uso comercial: no se puede vender ni cobrar.
-- Android, microG, la Play Store y las demás piezas son de sus autores, con sus licencias: ver
-  [CREDITOS.md](CREDITOS.md).
+- Android, microG, la Play Store, CleanYourTV, las imágenes del tema y las demás piezas son de sus autores, con sus
+  licencias: ver [CREDITOS.md](CREDITOS.md).

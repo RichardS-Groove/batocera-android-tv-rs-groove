@@ -1,7 +1,7 @@
 # Licencia · License
 
-**Batocera Android TV · RS Groove** — por Richard Campos (RS Groove), 2026.
-**Batocera Android TV · RS Groove** — by Richard Campos (RS Groove), 2026.
+**Android TV RS Groove** — por Richard Campos (RS Groove), 2026.
+**Android TV RS Groove** — by Richard Campos (RS Groove), 2026.
 
 ## Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
 
@@ -19,6 +19,10 @@ as the RS Groove Batocera theme.
 Texto legal completo · Full legal code: <https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode>
 
 ## Piezas de otros · Third-party parts
+
+Las imágenes de `tema/rs-groove/wallpapers/` **no** son nuestras: conservan su licencia (CC0 o dominio público), ver
+[tema/rs-groove/CREDITOS.md](tema/rs-groove/CREDITOS.md). The wallpapers in `tema/rs-groove/wallpapers/` keep their own
+license (CC0 or public domain).
 
 Android, microG, la Play Store y las demás piezas **no** están en este repositorio y tienen sus propias licencias: ver
 [CREDITOS.md](CREDITOS.md). Android, Android TV y Google Play son marcas de Google LLC.

@@ -1,6 +1,6 @@
-# Batocera Android TV · RS Groove
+# Android TV RS Groove
 
-![Version](https://img.shields.io/badge/version-1.1.1-7b2cbf)
+![Version](https://img.shields.io/badge/version-1.2.0-7b2cbf)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-e0343d)](LICENSE.md)
 ![Batocera](https://img.shields.io/badge/Batocera-43-e0343d)
 ![Android TV](https://img.shields.io/badge/LineageOS%2021-Android%20TV%2014-3ddc84)
@@ -13,7 +13,7 @@ the PC reboots into native Android TV (no virtual machine, full hardware power),
 
 Made by **Richard Campos (RS Groove)**.
 
-![Android TV home with TV Detox](docs/fotos/inicio-android-tv.png)
+![RS Groove home: wallpapers that change every minute](docs/fotos/inicio-rs-groove.png)
 
 ## Features
 
@@ -25,6 +25,10 @@ Made by **Richard Campos (RS Groove)**.
 - **Batocera-style buttons:** Cross (X) accepts, Circle goes back, Select goes to the Android home.
 - **Volume on the right stick**, like Batocera: up raises it, down lowers it (hold to repeat).
 - **Laptop keyboard in Spanish** (Latin America or Spain) with a one-command script.
+- **«RS Groove» home:** CleanYourTV's Apple TV-style home with our own theme of **18 wallpapers that change every
+  minute** (anime, landscapes and Earth from space). See [docs/INICIO.md](docs/INICIO.md) (Spanish).
+- **Your phone as the remote** with the Google TV app (plus the fix it needed): [docs/CELULAR.md](docs/CELULAR.md).
+- **Chrome and Google Drive** (phone versions; Google does not publish them for TV): [docs/GOOGLE.md](docs/GOOGLE.md).
 - **Batocera is not touched.** Everything lives in `/userdata/android-tv`, one menu folder and its own UEFI entry, so
   Batocera updates do not remove it.
 - **Time zone and language** set from boot (Argentina on the test machine; one line to change).
@@ -85,8 +89,9 @@ Step-by-step guide with the exact commands used (Spanish): **[docs/INSTALAR.md](
 
 ## Not included
 
-The Android ISO, `system.img`, the Play Store, microG and any other third-party files: only official links and their
-sha256. No keys, ADB keys or account data either.
+The Android ISO, `system.img`, the Play Store, microG, Chrome, Drive and a built CleanYourTV: only official links and
+their sha256. The theme wallpapers are included because they are CC0 or public domain
+([tema/rs-groove/CREDITOS.md](tema/rs-groove/CREDITOS.md)). No keys, ADB keys or account data either.
 
 Use official, licensed apps. This project does not install or support apps that stream movies or channels without
 rights.

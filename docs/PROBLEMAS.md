@@ -65,6 +65,25 @@ Android 14 elige el diseño del teclado físico según el idioma del teclado en 
 Es a propósito (como en la Batocera). Si un juego de Android usa la palanca derecha, también cambia el volumen. Para
 apagarlo, en `arranque.sh` borrá el bloque `ABS_RZ)`.
 
+## El celular no encuentra el Android TV (app Google TV)
+
+El Android TV Remote Service no tenía permiso de Bluetooth y dejaba el emparejamiento apagado («Pairing server is
+down»). **Arreglo:** [CELULAR.md](CELULAR.md).
+
+## No aparecen Chrome ni Drive en la Play Store
+
+Google no los publica para Android TV. **Arreglo:** versiones de celular, [GOOGLE.md](GOOGLE.md).
+
+## El inicio RS Groove no muestra Chrome ni Drive
+
+Muestra solo apps de TV. Las de celular van en `library_apps` del tema o se suman con la Biblioteca de aplicaciones.
+Ver [INICIO.md](INICIO.md).
+
+## Los `.bat` de Java o Android fallan con «no se reconoce como un comando»
+
+Si el usuario de Windows tiene `&` en el nombre, los `.bat` se rompen: usá una carpeta como `C:\rsgtv`. Si sigue,
+llamá al `.bat` con su ruta completa (Windows puede tener apagada la búsqueda en la carpeta actual).
+
 ## Katniss gasta CPU
 
 `adb shell pm disable-user com.google.android.katniss`.

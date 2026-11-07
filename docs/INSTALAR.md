@@ -1,6 +1,6 @@
 # Instalar Android TV en la Batocera
 
-Guía de la versión **1.1.1**. Son los pasos que se hicieron en el equipo de prueba (Dell Inspiron 3493, Batocera 43.1).
+Guía de la versión **1.2.0**. Son los pasos que se hicieron en el equipo de prueba (Dell Inspiron 3493, Batocera 43.1).
 Lo que todavía no se probó está marcado **(sin probar)**.
 
 Todos los comandos de la Batocera se escriben por SSH, como `root`.
@@ -50,8 +50,8 @@ El `init` de esta compilación acepta `ROOT=` (la partición), `SRC=` (la carpet
 ## 3. Bajar este proyecto a la Batocera
 
 ```bash
-cd /tmp && curl -L https://github.com/RichardS-Groove/batocera-android-tv-rs-groove/archive/refs/tags/v1.1.1.tar.gz | tar -xz
-P=/tmp/batocera-android-tv-rs-groove-1.1.1
+cd /tmp && curl -L https://github.com/RichardS-Groove/batocera-android-tv-rs-groove/archive/refs/tags/v1.2.0.tar.gz | tar -xz
+P=/tmp/batocera-android-tv-rs-groove-1.2.0
 ```
 
 ## 4. El cargador de Android (GRUB) y la entrada UEFI
@@ -224,9 +224,17 @@ Pasa Android al modo clásico (`settings_new_keyboard_ui=false`), donde el dise�
 interfaz (unos 30 s). Guarda una copia de la configuración anterior en `/data/rsgroove/`. Se nota en la ñ, los
 acentos y la `@` (AltGr + Q en Latinoamérica).
 
-## 12. Google Play
+## 12. Google Play, Chrome y Drive
 
 Ver [GOOGLE.md](GOOGLE.md).
+
+## 13. El inicio RS Groove
+
+Ver [INICIO.md](INICIO.md).
+
+## 14. El celular como control remoto
+
+Ver [CELULAR.md](CELULAR.md).
 
 ## Adaptar a otro equipo
 
