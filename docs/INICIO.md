@@ -4,8 +4,8 @@
 
 El inicio es el de [CleanYourTV](https://github.com/Gathin23/cleanyourtv) (Gathin, licencia MIT): estilo Apple TV, con
 saludo, reloj, fecha, botones de Wi-Fi y Ajustes, y una barra de apps de vidrio. Encima va el tema **RS Groove** de
-este repositorio (`tema/rs-groove/`): **18 imágenes que cambian cada minuto**, en orden aleatorio (anime en neón,
-paisajes de anime y la Tierra vista desde el espacio).
+este repositorio (`tema/rs-groove/`): **fondos que cambian cada minuto**, en orden aleatorio: 8 de anime de uso libre
+(personajes en neón y paisajes) más los que `fondos.sh` baja cada día de Wallhaven y Unsplash ([FONDOS.md](FONDOS.md)).
 
 De CleanYourTV se usa **solo el inicio**. Su otra parte, «limpiar» la tele (`tools/disable.sh`, apaga apps de fábrica),
 **no se usa**: este Android ya viene limpio y podría apagar piezas que necesitan microG y la Play Store.
@@ -97,9 +97,35 @@ El inicio anterior (TV Detox o el de LineageOS) queda instalado. Para volver a T
 | `app_library` | `true` | Botón «Biblioteca de aplicaciones»: suma o saca apps del inicio desde la tele |
 | `hidden_apps` | KernelSU, el mapeador de teclas, TV Detox | Fuera del inicio (siguen en la Biblioteca) |
 | `columns` | `5` | Apps por fila |
+| `app_banners` | Chrome y Drive | Carteles propios para las apps de celular (ver abajo) |
+| `wallpaper_captions` / `wallpaper_dim` | `true` / `15` | De dónde es cada fondo (artista o fotógrafo) y un oscurecido suave para leer el reloj |
 
 El resto viene del tema `weeb` de CleanYourTV: fondo negro, barra de vidrio, botones redondos, saludo. Todas las claves:
 `themes/README.md` de CleanYourTV.
+
+## Carteles para apps de celular (Chrome, Drive)
+
+Las apps de TV traen un cartel ancho; las de celular solo un ícono, que el inicio muestra chico sobre fondo oscuro. El
+inicio deja asignar un cartel propio (`app_banners`), pero el cartel tiene que estar **adentro** del inicio:
+
+1. Bajar el logo de la app en PNG grande (por ejemplo, de Wikimedia Commons, `Google_Chrome_icon_(February_2022).svg`
+   en 512 px o más). Los logos son marcas de sus dueños: por eso no vienen en este repositorio.
+2. Dibujar el cartel (640×360, fondo claro, logo y nombre, con la letra Outfit del inicio) con
+   `herramientas/cartel.ps1`:
+
+   ```powershell
+   .\herramientas\cartel.ps1 -Logo chrome.png -Texto Chrome -Out banner_chrome.png -Fuente C:\rsgtv\cleanyourtv\launcher\app\src\main\res\font\outfit.ttf
+   .\herramientas\cartel.ps1 -Logo drive.png -Texto "Google Drive" -Out banner_drive.png -Fuente <igual> -Letra 54 -LogoAlto 124
+   ```
+
+3. Copiarlos a `launcher\app\src\main\res\drawable-nodpi\` de CleanYourTV (el nombre tiene que empezar con
+   `banner_`: así la compilación no los descarta), volver a armar el inicio y `adb install -r` (las fotos y el tema se
+   conservan).
+4. En el tema: `"app_banners": ["com.android.chrome=banner_chrome", "com.google.android.apps.docs=banner_drive"]`.
+
+## Fotos nuevas cada día (Unsplash)
+
+Ver [FONDOS.md](FONDOS.md): necesita una clave gratis de Unsplash, que cada uno saca y guarda en su equipo.
 
 ## Imágenes propias
 

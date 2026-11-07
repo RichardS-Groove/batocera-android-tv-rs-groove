@@ -42,3 +42,10 @@ adb shell settings put secure bluetooth_name "Android TV RS Groove"
 ```
 
 Después, reiniciar el servicio como arriba para que lo anuncie con el nombre nuevo.
+
+**Si el celular ya estaba emparejado**, la app Google TV sigue mostrando el nombre que tenía al emparejar. En la app:
+tocar el nombre del equipo arriba del control → desconectar u olvidar → buscar de nuevo → «Android TV RS Groove» →
+código nuevo. Para comprobar qué anuncia Android: `adb shell dumpsys servicediscovery | grep androidtvremote`.
+
+El modelo que informa Android (`ro.product.model`) y el nombre del Bluetooth siguen siendo el código de la placa de la
+notebook. No se cambian: el modelo es parte de cómo Google Play reconoce el equipo.

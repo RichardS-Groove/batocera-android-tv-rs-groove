@@ -5,9 +5,9 @@
   "wallpaper": true,
   "wallpaper_rotation_minutes": 1,
   "wallpaper_order": "shuffle",
-  "wallpaper_captions": false,
+  "wallpaper_captions": true,
   "wallpaper_true_color": true,
-  "wallpaper_dim": 0,
+  "wallpaper_dim": 15,
   "cinematic_home": false,
   "dock_apps": [
     "com.google.android.youtube.tv",
@@ -25,6 +25,10 @@
   "library_apps": [
     "com.android.chrome",
     "com.google.android.apps.docs"
+  ],
+  "app_banners": [
+    "com.android.chrome=banner_chrome",
+    "com.google.android.apps.docs=banner_drive"
   ],
   "dock_title": false,
   "dock_glass": true,

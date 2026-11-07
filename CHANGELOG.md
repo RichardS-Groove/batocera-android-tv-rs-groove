@@ -3,6 +3,37 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versiones: `MAYOR.MENOR.ARREGLO`
 (cambio grande / mejora nueva / arreglo chico).
 
+## [1.3.0] — 2026-11-07
+
+### Agregado
+
+- **Fondos nuevos cada día** ([docs/FONDOS.md](docs/FONDOS.md)) con `fondos.sh`, que lanza `arranque.sh`:
+  - **Wallhaven** (principal, sin clave): arte de anime, lo más elegido, solo contenido apto, 1920×1080 o más, hasta
+    4 MB; muestra de dónde es cada imagen. No se suben a ningún lado: los derechos son de sus artistas.
+  - **Unsplash** (opcional, con clave gratis de cada uno): ciudades de neón, cyberpunk y Tokio de noche, con el crédito
+    del fotógrafo; registra cada descarga y respeta el cupo.
+  - **Reserva de hasta 90 fondos** para cuando no hay internet; los más viejos salen solos.
+- **Carteles para Chrome y Drive** como los de las apps de TV (`app_banners` + `herramientas/cartel.ps1`).
+- **README nuevo**, en español y en inglés, con más diseño.
+- La clave de Unsplash es de cada uno: `fondos.env.example` sin clave y `fondos.env` fuera de git.
+
+### Cambiado
+
+- El tema ya no trae las 10 fotos del espacio de la NASA: quedan las 8 de anime de uso libre.
+- Tema: de dónde es cada fondo en pantalla (`wallpaper_captions`) y un oscurecido suave (`wallpaper_dim` 15).
+
+### Arreglado
+
+- El `grep` de Android se cae con acentos (código 139): `fondos.sh` lee las respuestas con `awk`.
+- Al refrescar los fondos, Android llegó a mostrar por un momento el inicio anterior: ahora abre el inicio por su nombre.
+
+### Cómo se probó
+
+- Wallhaven: lectura probada con una respuesta real en el Android; primera tanda de 28 fondos de anime en 74 s.
+- Unsplash: primera tanda de 28 fotos en 70 s; frenó solo al llegar al cupo.
+- Reserva y créditos: un crédito por fondo; carpeta temporal vacía al terminar.
+- Carteles de Chrome y Drive vistos en el inicio.
+
 ## [1.2.0] — 2026-11-07
 
 ### Agregado

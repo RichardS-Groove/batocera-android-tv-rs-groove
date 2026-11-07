@@ -10,6 +10,9 @@
 *.tmp*
 .env
 *.env
+fondos.env
+fondos-creditos.txt
+fondos.ultima
 adb_keys
 adbkey*
 *.pub

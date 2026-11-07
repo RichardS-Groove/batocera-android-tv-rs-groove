@@ -1,106 +1,123 @@
-# Android TV RS Groove
+<div align="center">
 
-![Version](https://img.shields.io/badge/version-1.2.0-7b2cbf)
-[![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-e0343d)](LICENSE.md)
-![Batocera](https://img.shields.io/badge/Batocera-43-e0343d)
-![Android TV](https://img.shields.io/badge/LineageOS%2021-Android%20TV%2014-3ddc84)
+# 📺 Android TV RS Groove
+
+### Android TV on your Batocera, with its own entry in the menu
+
+Pick **Android TV** with the gamepad, the PC boots native Android at full power,<br>
+and when you are done press **Select + Start** to get back to your games.
+
+[![Version](https://img.shields.io/badge/version-1.3.0-7b2cbf?style=for-the-badge)](CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-e0343d?style=for-the-badge)](LICENSE.md)
+[![Batocera](https://img.shields.io/badge/Batocera-43-ff6a00?style=for-the-badge)](https://batocera.org)
+[![Android TV](https://img.shields.io/badge/Android%20TV-14-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://sourceforge.net/projects/lineageos-tv-x86/)
 
 [Español](README.md) · **English**
 
-Android TV on the same PC as your Batocera, **with its own entry in the Batocera menu**. Pick it with the gamepad,
-the PC reboots into native Android TV (no virtual machine, full hardware power), and when you are done press
-**Select + Start** to go back to Batocera.
+<img src="docs/fotos/inicio-rs-groove.png" alt="Android TV RS Groove home" width="100%">
 
-Made by **Richard Campos (RS Groove)**.
+<sub>The RS Groove home: anime wallpapers that change every minute, clock, greeting and your apps at hand.</sub>
 
-![RS Groove home: wallpapers that change every minute](docs/fotos/inicio-rs-groove.png)
+</div>
 
-## Features
+---
 
-- **«Android TV» entry in the Batocera menu.** Reboots into Android with a one-time UEFI boot (`BootNext`): Batocera
-  always stays first in the boot order.
-- **Automatic screen.** TV connected over HDMI → Android shows on the TV; otherwise on the laptop screen. Manual
-  entries too.
-- **Back to Batocera with Select + Start** (together), or by rebooting Android.
-- **Batocera-style buttons:** Cross (X) accepts, Circle goes back, Select goes to the Android home.
-- **Volume on the right stick**, like Batocera: up raises it, down lowers it (hold to repeat).
-- **Laptop keyboard in Spanish** (Latin America or Spain) with a one-command script.
-- **«RS Groove» home:** CleanYourTV's Apple TV-style home with our own theme of **18 wallpapers that change every
-  minute** (anime, landscapes and Earth from space). See [docs/INICIO.md](docs/INICIO.md) (Spanish).
-- **Your phone as the remote** with the Google TV app (plus the fix it needed): [docs/CELULAR.md](docs/CELULAR.md).
-- **Chrome and Google Drive** (phone versions; Google does not publish them for TV): [docs/GOOGLE.md](docs/GOOGLE.md).
-- **Batocera is not touched.** Everything lives in `/userdata/android-tv`, one menu folder and its own UEFI entry, so
-  Batocera updates do not remove it.
-- **Time zone and language** set from boot (Argentina on the test machine; one line to change).
-- **PC control over ADB** (screenshots, keys, installing apps), key-authorized.
-- **Light Google Play:** microG + the Android TV Play Store for x86_64, without the ARM translator
-  ([docs/GOOGLE.md](docs/GOOGLE.md), in Spanish).
+## ✨ Features
 
-![Google Play on Android TV](docs/fotos/play-store.png)
+| | |
+| :---: | --- |
+| 🎮 | **Batocera menu entry.** One more «Android TV» system next to your consoles. |
+| 📺 | **Automatic screen.** TV plugged in → HDMI; no TV → the laptop screen. |
+| ↩️ | **Back with Select + Start.** Any reboot also lands back in Batocera. |
+| 🕹️ | **Batocera-style gamepad.** Cross accepts, Circle goes back, Select goes home and the **right stick changes the volume**. |
+| 🖼️ | **RS Groove home.** Apple TV style, with **anime wallpapers that change every minute** and refresh every day, plus an offline reserve. |
+| 📱 | **Your phone as the remote.** With the Google TV app: D-pad, volume and keyboard. |
+| 🛒 | **Light Google Play.** microG + the TV Play Store for this CPU, no translator. Chrome and Google Drive too. |
+| ⌨️ | **Spanish keyboard.** ñ, accents and @ work on the laptop keyboard. |
+| 🛡️ | **Batocera untouched.** Everything lives apart, so Batocera updates do not remove it. |
 
-## How it works
+## 📸 Screenshots
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/fotos/inicio-rs-groove.png" alt="RS Groove home"></td>
+    <td width="50%"><img src="docs/fotos/play-store.png" alt="Google Play on Android TV"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub><b>RS Groove home</b> · Chrome and Drive banners, wallpapers that change by themselves</sub></td>
+    <td align="center"><sub><b>Google Play</b> · TV version, fast, with every cover</sub></td>
+  </tr>
+</table>
+
+## ⚙️ How it works
 
 ```mermaid
 flowchart LR
-    A[Batocera menu] -->|«Android TV»| B[Launcher<br/>Android TV.sh]
-    B -->|picks TV or laptop<br/>sets BootNext| C[Clean reboot]
-    C --> D[Android GRUB<br/>EFI/android]
-    D --> E[LineageOS 21<br/>Android TV]
-    E -->|arranque.sh: BootNext = Batocera<br/>network ADB + shortcut| F{Select + Start<br/>or reboot}
-    F --> A
+    A[🎮 Batocera menu] -->|pick «Android TV»| B[Launcher]
+    B -->|TV or laptop| C[🔄 Clean reboot]
+    C --> D[📺 Android TV]
+    D -->|Select + Start| A
 ```
 
-## Tested on
+Every piece explained (Spanish): **[docs/COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md)**.
 
-| Item | Detail |
-| --- | --- |
-| Machine | Dell Inspiron 3493 (Intel Core i5-1035G1, Intel UHD G1, 16 GB, UEFI, Secure Boot off) |
-| Batocera | 43.1, x86_64 |
-| Android | LineageOS 21 Android TV x86_64 `20260331` (LineageOS-TV-x86 community) |
-| Output | HDMI to a 1080p 60 Hz TV, or the laptop screen |
-| Gamepad | ShanWan PS3/PC (USB `2563:0523`) |
-| Wi-Fi | Qualcomm QCA9377 (2.4 and 5 GHz with WPA2) |
+## 🚀 Install
 
-Screen names (`eDP-1`, `HDMI-A-1`) and the button layout file belong to this machine: see «Adaptar a otro equipo» in
-[docs/INSTALAR.md](docs/INSTALAR.md).
+> [!TIP]
+> The full guide, with every command exactly as used, is in **[docs/INSTALAR.md](docs/INSTALAR.md)** (Spanish).
 
-## Install
+1. 💿 **Download Android TV** (LineageOS 21 for PC) and check its hash.
+2. 📂 **Copy** its files to Batocera's `/userdata/android-tv/`.
+3. 🧭 **Put its loader** on a separate partition and create the «Android TV» boot entry.
+4. 🎮 **Add the entry** to the Batocera menu.
+5. 🛠️ **First boot** and the finishing touches: Select + Start, buttons, keyboard.
+6. 🛒 **Google Play, Chrome and Drive** → [docs/GOOGLE.md](docs/GOOGLE.md)
+7. 🖼️ **RS Groove home** → [docs/INICIO.md](docs/INICIO.md) · **Daily wallpapers** → [docs/FONDOS.md](docs/FONDOS.md)
+8. 📱 **Phone as the remote** → [docs/CELULAR.md](docs/CELULAR.md)
 
-Step-by-step guide with the exact commands used (Spanish): **[docs/INSTALAR.md](docs/INSTALAR.md)**.
-
-1. Download the official LineageOS-TV-x86 ISO and check its sha256.
-2. Copy `kernel`, `initrd.img`, `system.efs` and `ramdisk-recovery.img` to `/userdata/android-tv/`.
-3. Put the Android loader (GRUB) on a FAT32 partition that is **not** the Batocera one, with this repo's `grub.cfg`,
-   and create the «Android TV» UEFI entry **outside the boot order** (`efibootmgr -C`).
-4. Copy the menu entry (`batocera/`) to `/userdata`.
-5. First boot, make the system writable (`system.img`), add `arranque.sh`, the custom `init.sh` and the button file.
-6. Google Play: [docs/GOOGLE.md](docs/GOOGLE.md).
-
-## Daily use
+## 🕹️ Daily use
 
 | I want to… | How |
 | --- | --- |
-| Start Android TV | Batocera menu → **Android TV** → **Android TV** |
-| Go back to Batocera | **Select + Start** together, or *Restart* from Android |
-| Accept / go back | **Cross (X)** accepts · **Circle** goes back |
-| Android home | **Select** |
-| Volume up / down | **Right stick** up or down (hold to keep going) |
-| Pick the screen manually | Android boot menu: «solo la tele» (TV only) or «solo la pantalla de la notebook» (laptop only) |
+| Start Android TV | Batocera menu → **Android TV** |
+| Go back to Batocera | **Select + Start** together |
+| Accept · go back | **Cross** · **Circle** |
+| Go home | **Select** |
+| Volume up or down | **Right stick** up or down |
+| Use the phone | **Google TV** app → Remote → **Android TV RS Groove** |
+| Add or remove home apps | **App library**, after the last row |
 
-## Not included
+## 🧪 Tested on
 
-The Android ISO, `system.img`, the Play Store, microG, Chrome, Drive and a built CleanYourTV: only official links and
-their sha256. The theme wallpapers are included because they are CC0 or public domain
-([tema/rs-groove/CREDITOS.md](tema/rs-groove/CREDITOS.md)). No keys, ADB keys or account data either.
+| | |
+| --- | --- |
+| 💻 Machine | Dell Inspiron 3493 · Intel Core i5-1035G1 · 16 GB |
+| 🎮 Batocera | 43.1 |
+| 📺 Android | LineageOS 21 Android TV x86_64 `20260331` |
+| 🖥️ Output | 1080p TV over HDMI, or the laptop screen |
+| 🕹️ Gamepad | ShanWan PS3/PC |
 
-Use official, licensed apps. This project does not install or support apps that stream movies or channels without
-rights.
+## 🔒 What it does not ship (on purpose)
 
-## Versions, credits, license
+- **No keys.** Keys (for example Unsplash's, for the wallpapers) belong to each user and stay on their device.
+- **Nothing from others.** No Android, Play Store, microG, Chrome, Drive or Wallhaven art: only official links and hashes.
+- **No personal data.** No accounts, networks or keys.
 
-- Every improvement or fix ships as a new version: [CHANGELOG.md](CHANGELOG.md).
-- Scripts, configuration, docs and photos in this repo: **[Creative Commons BY-NC-SA 4.0](LICENSE.md)**, © 2026
-  Richard Campos (RS Groove), the same license as the RS Groove Batocera theme. You may share, copy and **modify** it,
-  crediting Richard Campos (RS Groove) with a link to this repository, indicating changes and keeping the same
-  license. No commercial use.
-- Android, microG, the Play Store and the other parts belong to their authors: [CREDITOS.md](CREDITOS.md).
+Use official, licensed apps. This project does not install or support apps that stream movies or channels without rights.
+
+## 📜 License and credits
+
+[**Creative Commons BY-NC-SA 4.0**](LICENSE.md) — the same as the [RS Groove Batocera theme](https://github.com/RichardS-Groove/es-theme-artflix-cobalto-alekfull-rs-groove):
+share, copy and **modify** it, credit **Richard Campos (RS Groove)** with a link, say what you changed and keep the same
+license. No commercial use.
+
+Android, microG, the Play Store, CleanYourTV and the images belong to their authors: **[CREDITOS.md](CREDITOS.md)**.
+Every version in detail: **[CHANGELOG.md](CHANGELOG.md)**.
+
+<div align="center">
+
+---
+
+Made with 💜 by **Richard Campos · RS Groove**
+
+</div>

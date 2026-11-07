@@ -1,6 +1,6 @@
 # Instalar Android TV en la Batocera
 
-Guía de la versión **1.2.0**. Son los pasos que se hicieron en el equipo de prueba (Dell Inspiron 3493, Batocera 43.1).
+Guía de la versión **1.3.0**. Son los pasos que se hicieron en el equipo de prueba (Dell Inspiron 3493, Batocera 43.1).
 Lo que todavía no se probó está marcado **(sin probar)**.
 
 Todos los comandos de la Batocera se escriben por SSH, como `root`.
@@ -50,8 +50,8 @@ El `init` de esta compilación acepta `ROOT=` (la partición), `SRC=` (la carpet
 ## 3. Bajar este proyecto a la Batocera
 
 ```bash
-cd /tmp && curl -L https://github.com/RichardS-Groove/batocera-android-tv-rs-groove/archive/refs/tags/v1.2.0.tar.gz | tar -xz
-P=/tmp/batocera-android-tv-rs-groove-1.2.0
+cd /tmp && curl -L https://github.com/RichardS-Groove/batocera-android-tv-rs-groove/archive/refs/tags/v1.3.0.tar.gz | tar -xz
+P=/tmp/batocera-android-tv-rs-groove-1.3.0
 ```
 
 ## 4. El cargador de Android (GRUB) y la entrada UEFI

@@ -3,6 +3,7 @@
 # 1) Prende ADB por red (puerto 5555) para que la PC pueda controlar Android.
 # 2) Atajo del joystick: Select + Start juntos -> reinicia -> vuelve la Batocera.
 # 3) Palanca derecha, como en la Batocera: arriba sube el volumen, abajo lo baja (sostenida, repite).
+# 4) Lanza fondos.sh: fotos nuevas de Unsplash para el inicio.
 LOG=/data/rsgroove/arranque.log
 echo "$(date '+%F %T') arranque.sh empezó" >> $LOG
 # 0) Que cualquier reinicio vuelva a la Batocera: BootNext = primera entrada del orden UEFI.
@@ -17,6 +18,8 @@ until [ "$(getprop sys.boot_completed)" = "1" ]; do sleep 2; done
 setprop service.adb.tcp.port 5555
 setprop ctl.restart adbd
 echo "$(date '+%F %T') ADB por red en el puerto 5555" >> $LOG
+# 4) Fotos nuevas de Unsplash para el inicio (si hay clave en fondos.env); revisa cada hora.
+[ -f /data/rsgroove/fondos.sh ] && sh /data/rsgroove/fondos.sh --vigilar >/dev/null 2>&1 &
 # Palanca derecha vertical = ABS_RZ (0 arriba … 255 abajo, centro ~128). Fuera de la zona muerta, repite la tecla.
 VOL_ARRIBA=60; VOL_ABAJO=195
 vol_repetir() { while :; do input keyevent "$1"; sleep 0.05; done; }

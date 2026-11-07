@@ -1,152 +1,142 @@
-# Android TV RS Groove
+<div align="center">
 
-![Versión](https://img.shields.io/badge/versi%C3%B3n-1.2.0-7b2cbf)
-[![Licencia](https://img.shields.io/badge/licencia-CC%20BY--NC--SA%204.0-e0343d)](LICENSE.md)
-![Batocera](https://img.shields.io/badge/Batocera-43-e0343d)
-![Android TV](https://img.shields.io/badge/LineageOS%2021-Android%20TV%2014-3ddc84)
+# 📺 Android TV RS Groove
+
+### Android TV en tu Batocera, con su propia entrada en el menú
+
+Elegís **Android TV** con el joystick, la PC arranca Android nativo con toda su potencia,<br>
+y cuando terminás apretás **Select + Start** y volvés a tus juegos.
+
+[![Versión](https://img.shields.io/badge/versión-1.3.0-7b2cbf?style=for-the-badge)](CHANGELOG.md)
+[![Licencia](https://img.shields.io/badge/licencia-CC%20BY--NC--SA%204.0-e0343d?style=for-the-badge)](LICENSE.md)
+[![Batocera](https://img.shields.io/badge/Batocera-43-ff6a00?style=for-the-badge)](https://batocera.org)
+[![Android TV](https://img.shields.io/badge/Android%20TV-14-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://sourceforge.net/projects/lineageos-tv-x86/)
 
 **Español** · [English](README.en.md)
 
-Android TV en la misma PC que tu **Batocera**, **con su propia entrada en el menú**. La elegís con el joystick, la PC
-reinicia en Android TV nativo (sin máquina virtual, con toda la potencia del equipo) y, cuando terminás, apretás
-**Select + Start** y volvés a la Batocera.
+<img src="docs/fotos/inicio-rs-groove.png" alt="Inicio de Android TV RS Groove" width="100%">
 
-Hecho por **Richard Campos (RS Groove)**.
+<sub>El inicio RS Groove: fondos de anime que cambian cada minuto, reloj, saludo y tus apps a mano.</sub>
 
-![Inicio RS Groove: imágenes que cambian cada minuto](docs/fotos/inicio-rs-groove.png)
+</div>
 
-## Qué hace
+---
 
-- **Entrada «Android TV» en el menú de la Batocera.** Reinicia la PC en Android con un arranque de una sola vez
-  (`BootNext` de UEFI): la Batocera sigue siendo lo primero que arranca siempre.
-- **Pantalla automática.** Si la tele está conectada por HDMI, Android sale por la tele; si no, por la pantalla de la
-  notebook. También hay entradas para elegirla a mano.
-- **Vuelta a la Batocera con Select + Start** (juntos), o reiniciando Android.
-- **Botones como en la Batocera:** Cruz (X) acepta, Círculo vuelve, Select va al inicio de Android.
-- **Volumen con la palanca derecha**, como en la Batocera: arriba sube, abajo baja (sostenida, repite).
-- **Teclado de la notebook en español** (Latinoamérica o España), con una receta de un solo comando.
-- **Inicio «RS Groove»:** el inicio estilo Apple TV de CleanYourTV con un tema propio de **18 imágenes que cambian
-  cada minuto** (anime, paisajes y la Tierra desde el espacio). Ver [docs/INICIO.md](docs/INICIO.md).
-- **El celular como control remoto** con la app Google TV (con el arreglo que necesitó). Ver
-  [docs/CELULAR.md](docs/CELULAR.md).
-- **Chrome y Google Drive** (versiones de celular, que Google no publica para TV). Ver [docs/GOOGLE.md](docs/GOOGLE.md).
-- **No toca la Batocera.** Todo vive en `/userdata/android-tv`, en una carpeta del menú y en una entrada UEFI propia.
-  Las actualizaciones de la Batocera no lo borran.
-- **Hora e idioma** fijados desde el arranque (en este equipo, Argentina; se cambia en una línea).
-- **Control desde la PC por ADB** (fotos de pantalla, teclas, instalar apps), con autorización de llave.
-- **Google Play liviano:** microG + la Play Store de Android TV para x86_64, sin traductor ARM (ver
-  [docs/GOOGLE.md](docs/GOOGLE.md)).
+## ✨ Qué tiene
 
-![Google Play en Android TV](docs/fotos/play-store.png)
+| | |
+| :---: | --- |
+| 🎮 | **Entrada en el menú de la Batocera.** Un sistema «Android TV» más, al lado de tus consolas. |
+| 📺 | **Pantalla automática.** Con la tele enchufada sale por HDMI; sin tele, por la pantalla de la notebook. |
+| ↩️ | **Volver con Select + Start.** Cualquier reinicio también vuelve solo a la Batocera. |
+| 🕹️ | **El joystick como en la Batocera.** Cruz acepta, Círculo vuelve, Select va al inicio y la **palanca derecha sube y baja el volumen**. |
+| 🖼️ | **Inicio RS Groove.** Estilo Apple TV, con **fondos de anime que cambian cada minuto** y se renuevan cada día. Guarda una reserva para cuando no hay internet. |
+| 📱 | **Tu celular como control.** Con la app Google TV: flechas, volumen y teclado. |
+| 🛒 | **Google Play liviano.** microG + la Play Store de TV para este procesador, sin traductor. Además Chrome y Google Drive. |
+| ⌨️ | **Teclado en español.** La ñ, los acentos y la @ funcionan en el teclado de la notebook. |
+| 🛡️ | **No toca la Batocera.** Todo vive aparte: las actualizaciones de la Batocera no lo borran. |
 
-## Cómo funciona
+## 📸 Así se ve
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/fotos/inicio-rs-groove.png" alt="Inicio RS Groove"></td>
+    <td width="50%"><img src="docs/fotos/play-store.png" alt="Google Play en Android TV"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub><b>Inicio RS Groove</b> · carteles para Chrome y Drive, fondos que cambian solos</sub></td>
+    <td align="center"><sub><b>Google Play</b> · versión de TV, rápida y con todas las carátulas</sub></td>
+  </tr>
+</table>
+
+## ⚙️ Cómo funciona
 
 ```mermaid
 flowchart LR
-    A[Menú de la Batocera] -->|«Android TV»| B[Lanzador<br/>Android TV.sh]
-    B -->|elige tele o notebook<br/>arma BootNext| C[Reinicio limpio]
-    C --> D[GRUB de Android<br/>EFI/android]
-    D --> E[LineageOS 21<br/>Android TV]
-    E -->|arranque.sh: BootNext = Batocera<br/>ADB por red + atajo| F{Select + Start<br/>o reiniciar}
-    F --> A
+    A[🎮 Menú de la Batocera] -->|elegís «Android TV»| B[Lanzador]
+    B -->|elige tele o notebook| C[🔄 Reinicio limpio]
+    C --> D[📺 Android TV]
+    D -->|Select + Start| A
 ```
 
-Detalle de cada pieza en [docs/COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md).
+Cada pieza, explicada: **[docs/COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md)**.
 
-## Probado en
+## 🚀 Instalar
 
-| Qué | Detalle |
-| --- | --- |
-| Equipo | Dell Inspiron 3493 (Intel Core i5-1035G1, Intel UHD G1, 16 GB, UEFI, arranque seguro apagado) |
-| Batocera | 43.1, x86_64 |
-| Android | LineageOS 21 Android TV x86_64 `20260331` (comunidad LineageOS-TV-x86) |
-| Salida | HDMI a una tele 1080p 60 Hz, o la pantalla de la notebook |
-| Joystick | ShanWan PS3/PC (USB `2563:0523`) |
-| Wi-Fi | Qualcomm QCA9377 (2,4 y 5 GHz con WPA2) |
+> [!TIP]
+> La guía completa, con cada comando tal cual se usó, está en **[docs/INSTALAR.md](docs/INSTALAR.md)**.
 
-Otros equipos pueden andar igual, pero los nombres de pantalla (`eDP-1`, `HDMI-A-1`) y el archivo de botones son de
-este equipo: ver [docs/INSTALAR.md](docs/INSTALAR.md), «Adaptar a otro equipo».
+1. 💿 **Bajar Android TV** (LineageOS 21 para PC) y comprobar su huella.
+2. 📂 **Copiar** sus archivos a la carpeta `/userdata/android-tv/` de la Batocera.
+3. 🧭 **Poner su cargador** en una partición aparte y crear la entrada «Android TV» del equipo.
+4. 🎮 **Sumar la entrada** al menú de la Batocera.
+5. 🛠️ **Primer arranque** y los toques finales: volver con Select + Start, botones, teclado.
+6. 🛒 **Google Play, Chrome y Drive** → [docs/GOOGLE.md](docs/GOOGLE.md)
+7. 🖼️ **El inicio RS Groove** → [docs/INICIO.md](docs/INICIO.md) · **Fondos nuevos cada día** → [docs/FONDOS.md](docs/FONDOS.md)
+8. 📱 **El celular como control** → [docs/CELULAR.md](docs/CELULAR.md)
 
-## Instalar
-
-Guía paso a paso, con los comandos tal cual se usaron: **[docs/INSTALAR.md](docs/INSTALAR.md)**.
-
-En corto:
-
-1. Bajar la ISO oficial de LineageOS-TV-x86 y comprobar su huella sha256.
-2. Copiar `kernel`, `initrd.img`, `system.efs` y `ramdisk-recovery.img` a `/userdata/android-tv/`.
-3. Poner el cargador de Android (GRUB) en una partición FAT32 que **no** sea la de la Batocera, con el `grub.cfg` de
-   este repositorio, y crear la entrada UEFI «Android TV» **fuera del orden de arranque**.
-4. Copiar la entrada del menú (`batocera/`) a `/userdata`.
-5. Primer arranque, hacer el sistema modificable, sumar `arranque.sh`, el `init.sh` propio y los botones.
-6. Google Play, Chrome y Drive: [docs/GOOGLE.md](docs/GOOGLE.md).
-7. El inicio RS Groove: [docs/INICIO.md](docs/INICIO.md). El celular como control: [docs/CELULAR.md](docs/CELULAR.md).
-
-## Uso diario
+## 🕹️ Uso diario
 
 | Quiero… | Cómo |
 | --- | --- |
-| Entrar a Android TV | Menú de la Batocera → **Android TV** → **Android TV** |
-| Volver a la Batocera | **Select + Start** juntos, o *Reiniciar* desde Android |
-| Aceptar / volver | **Cruz (X)** acepta · **Círculo** vuelve |
-| Ir al inicio de Android | **Select** |
-| Subir o bajar el volumen | **Palanca derecha** arriba o abajo (sostenida, sigue subiendo o bajando) |
-| Escribir con el teclado de la notebook | Ya está en español (ñ, acentos, `@` con AltGr + Q): ver [docs/INSTALAR.md](docs/INSTALAR.md), paso 11 |
+| Entrar a Android TV | Menú de la Batocera → **Android TV** |
+| Volver a la Batocera | **Select + Start** juntos |
+| Aceptar · volver | **Cruz** · **Círculo** |
+| Ir al inicio | **Select** |
+| Subir o bajar el volumen | **Palanca derecha** arriba o abajo |
 | Manejarlo desde el celular | App **Google TV** → Control remoto → **Android TV RS Groove** |
-| Sumar o sacar apps del inicio | Botón **Biblioteca de aplicaciones** (al final de las filas) |
-| Elegir la pantalla a mano | En el menú de arranque de Android: «solo la tele» o «solo la pantalla de la notebook» |
+| Sumar o sacar apps del inicio | **Biblioteca de aplicaciones**, al final de las filas |
 
-## Controlar Android desde la PC
+## 📚 Guías
 
-ADB por la red queda prendido en cada arranque (puerto `5555`), y solo entra una PC autorizada. Fotos de pantalla,
-teclas, instalar apps y registros: [docs/CONTROL-ADB.md](docs/CONTROL-ADB.md).
+| Guía | De qué trata |
+| --- | --- |
+| [Instalar](docs/INSTALAR.md) | Todo el armado, paso a paso |
+| [Cómo funciona](docs/COMO-FUNCIONA.md) | El recorrido completo y cada archivo |
+| [Google](docs/GOOGLE.md) | microG, Play Store para TV, Chrome y Drive |
+| [Inicio RS Groove](docs/INICIO.md) | El inicio CleanYourTV, el tema y los carteles |
+| [Fondos](docs/FONDOS.md) | Fondos de anime y fotos nuevas cada día, con reserva sin internet |
+| [Celular](docs/CELULAR.md) | El celular como control remoto |
+| [Control desde la PC](docs/CONTROL-ADB.md) | Fotos de pantalla, teclas e instalar apps por ADB |
+| [Problemas](docs/PROBLEMAS.md) | Lo que pasó en las pruebas y cómo se arregló |
 
-## Problemas conocidos
+## 🧪 Probado en
 
-Pantalla negra, el asistente que se queda en «Searching for accessories…», redes solo WPA3, Google que no inicia
-sesión, Play Store lenta y más, con su arreglo: [docs/PROBLEMAS.md](docs/PROBLEMAS.md).
+| | |
+| --- | --- |
+| 💻 Equipo | Dell Inspiron 3493 · Intel Core i5-1035G1 · 16 GB |
+| 🎮 Batocera | 43.1 |
+| 📺 Android | LineageOS 21 Android TV x86_64 `20260331` |
+| 🖥️ Salida | Tele 1080p por HDMI, o la pantalla de la notebook |
+| 🕹️ Joystick | ShanWan PS3/PC |
 
-## Qué hay en este repositorio
+Otros equipos pueden andar igual; lo que cambia de un equipo a otro está en [docs/INSTALAR.md](docs/INSTALAR.md),
+«Adaptar a otro equipo».
 
-```text
-batocera/                                  → va a /userdata (Batocera)
-  roms/android/Android TV.sh               lanzador del menú (pantalla automática + BootNext + reinicio limpio)
-  roms/android/gamelist.xml                nombre y descripción en el menú
-  system/configs/emulationstation/es_systems_android.cfg   sistema «Android TV» del menú
-efi/                                       → va a la partición FAT32 del cargador
-  boot/grub/grub.cfg                       menú de arranque de Android
-  EFI/android/pantalla.cfg                 lo escribe el lanzador (tele o notebook)
-android-tv/                                → va a /userdata/android-tv
-  fstab.android                            usa system.img (sistema modificable)
-  scripts/9-rsgroove                       monta nuestro init.sh al arrancar
-  data/rsgroove/arranque.sh                BootNext, ADB por red, atajo Select + Start, volumen con la palanca derecha
-  data/system/devices/keylayout/Vendor_2563_Product_0523.kl   botones como en la Batocera
-herramientas/generar-init.sh               genera nuestro init.sh desde el original de Android
-herramientas/teclado-espanol.sh            teclado de la notebook en español (Android 14)
-tema/rs-groove/                            tema del inicio: config.json + 18 imágenes (CC0 y dominio público)
-docs/                                      guías y fotos
-```
+## 🔒 Lo que no trae (a propósito)
 
-**No incluye** la ISO de Android, `system.img`, la Play Store, microG, Chrome, Drive ni el inicio CleanYourTV armado:
-solo los enlaces oficiales y sus huellas sha256. Las imágenes del tema sí van, porque son de uso libre (ver
-[tema/rs-groove/CREDITOS.md](tema/rs-groove/CREDITOS.md)). Tampoco claves, llaves de ADB ni datos de ninguna cuenta.
+- **Ninguna clave.** Las claves (por ejemplo la de Unsplash para los fondos) son de cada uno y se guardan solo en el equipo.
+- **Nada de otros.** Ni Android, ni la Play Store, ni microG, ni Chrome o Drive, ni el arte de Wallhaven: solo los enlaces
+  oficiales y sus huellas.
+- **Ningún dato personal.** Ni cuentas, ni redes, ni llaves.
 
-## Apps
+Usá apps oficiales, con licencia. Este proyecto no instala ni da soporte a apps que pasan películas o canales sin derechos.
 
-Usá apps oficiales, con licencia. Este proyecto no instala ni da soporte a apps que pasan películas o canales sin
-derechos.
+## 📜 Licencia y créditos
 
-## Versiones
+[**Creative Commons BY-NC-SA 4.0**](LICENSE.md) — la misma del [tema RS Groove para Batocera](https://github.com/RichardS-Groove/es-theme-artflix-cobalto-alekfull-rs-groove):
 
-Cada mejora o arreglo sale con versión nueva (`MAYOR.MENOR.ARREGLO`) y su detalle en [CHANGELOG.md](CHANGELOG.md).
+- ✅ Se puede compartir, copiar y **modificar**.
+- 📝 Nombrando a **Richard Campos (RS Groove)** con un enlace a este proyecto, contando qué cambiaste y con la misma licencia.
+- 🚫 Sin uso comercial: no se vende ni se cobra.
 
-## Créditos y licencia
+Android, microG, la Play Store, CleanYourTV y las imágenes son de sus autores: **[CREDITOS.md](CREDITOS.md)**.
+Cada versión, con su detalle: **[CHANGELOG.md](CHANGELOG.md)**.
 
-- Scripts, configuración, documentación y fotos de este repositorio: **[Creative Commons BY-NC-SA 4.0](LICENSE.md)**,
-  © 2026 Richard Campos (RS Groove), la misma licencia del [tema RS Groove](https://github.com/RichardS-Groove/es-theme-artflix-cobalto-alekfull-rs-groove).
-  - ✅ Se puede compartir, copiar y **modificar**.
-  - 📝 Dando crédito a Richard Campos (RS Groove) con un enlace a este repositorio, indicando los cambios y publicando
-    con la misma licencia.
-  - 🚫 Sin uso comercial: no se puede vender ni cobrar.
-- Android, microG, la Play Store, CleanYourTV, las imágenes del tema y las demás piezas son de sus autores, con sus
-  licencias: ver [CREDITOS.md](CREDITOS.md).
+<div align="center">
+
+---
+
+Hecho con 💜 por **Richard Campos · RS Groove**
+
+</div>
