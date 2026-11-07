@@ -1,0 +1,7 @@
+$FS/system$SLOT.img  system$SLOT
+$FS/kernel$SLOT  kernel$SLOT
+$FS/initrd$SLOT.img  initrd$SLOT
+$FS/ramdisk-recovery.img  ramdisk-recovery
+$FS/data  userdata      
+$FS/boot  bootloader
+none  /sys/firmware/efi/efivars  efivarfs  defaults  defaults

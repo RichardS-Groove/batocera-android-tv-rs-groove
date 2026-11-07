@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<gameList>
+	<game>
+		<path>./Android TV.sh</path>
+		<name>Android TV</name>
+		<desc>Reinicia la notebook en Android TV (LineageOS 21 Android TV). Para volver a la Batocera, reiniciá desde Android.</desc>
+		<genre>Sistema</genre>
+	</game>
+</gameList>

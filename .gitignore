@@ -1,0 +1,21 @@
+# Nunca se suben archivos de otros (solo enlaces y huellas) ni datos privados.
+*.iso
+*.img
+*.efs
+*.efs.original
+*.sfs
+*.apk
+*.zip
+*.log
+*.tmp*
+.env
+*.env
+adb_keys
+adbkey*
+*.pub
+init.sh.original
+kmsg.txt
+log.txt
+bootlog.txt
+bootnext.bin
+respaldo-*

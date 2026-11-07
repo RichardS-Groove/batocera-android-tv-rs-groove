@@ -1,0 +1,5 @@
+# Los scripts y textos se guardan con fin de línea de Linux (la Batocera y Android los ejecutan así).
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.gif binary

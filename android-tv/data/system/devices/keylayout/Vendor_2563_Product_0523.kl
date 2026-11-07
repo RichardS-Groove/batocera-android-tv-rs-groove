@@ -1,0 +1,24 @@
+# ShanWan PS3/PC Gamepad (USB 2563:0523) — botones como en la Batocera.
+# Proyecto batocera-android-tv (RichardS-Groove). Va en /data/system/devices/keylayout/.
+# X (Cruz) = aceptar, Círculo = volver, Select = inicio de Android, Start = Start.
+# Select + Start juntos = volver a la Batocera (lo hace arranque.sh leyendo el joystick directo).
+
+key 288   BUTTON_Y          # Triángulo  (BTN_TRIGGER)
+key 289   BUTTON_B          # Círculo    (BTN_THUMB)   -> volver
+key 290   BUTTON_A          # Cruz / X   (BTN_THUMB2)  -> aceptar
+key 291   BUTTON_X          # Cuadrado   (BTN_TOP)
+key 292   BUTTON_L1         # L1         (BTN_TOP2)
+key 293   BUTTON_R1         # R1         (BTN_PINKIE)
+key 294   BUTTON_L2         # L2         (BTN_BASE)
+key 295   BUTTON_R2         # R2         (BTN_BASE2)
+key 296   HOME              # Select     (BTN_BASE3)   -> inicio de Android
+key 297   BUTTON_START      # Start      (BTN_BASE4)
+key 298   BUTTON_THUMBL     # L3         (BTN_BASE5)
+key 299   BUTTON_THUMBR     # R3         (BTN_BASE6)
+
+axis 0x00 X                 # palanca izquierda
+axis 0x01 Y
+axis 0x02 Z                 # palanca derecha
+axis 0x05 RZ
+axis 0x10 HAT_X             # cruceta
+axis 0x11 HAT_Y

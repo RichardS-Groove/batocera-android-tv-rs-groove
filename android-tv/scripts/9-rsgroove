@@ -1,0 +1,8 @@
+# batocera-android-tv (RichardS-Groove): usa nuestra copia de /system/etc/init.sh,
+# que suma ADB por red y el atajo Select+Start. La carga el init del initrd con «source»
+# antes de montar; el montaje se hace en post_detect, con el sistema ya montado en /android.
+post_detect() {
+	if [ -f "/mnt/$SRC/rsgroove/init.sh" ] && [ -f /android/system/etc/init.sh ]; then
+		mount --bind "/mnt/$SRC/rsgroove/init.sh" /android/system/etc/init.sh && echo "rsgroove: init.sh propio montado"
+	fi
+}
