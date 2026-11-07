@@ -3,6 +3,13 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versiones: `MAYOR.MENOR.ARREGLO`
 (cambio grande / mejora nueva / arreglo chico).
 
+## [1.1.1] — 2026-11-07
+
+### Arreglado
+
+- Guía de instalación, paso 11: el `adb push` del teclado usaba la ruta de la Batocera (`$P`); se corre desde la
+  carpeta del proyecto en la PC.
+
 ## [1.1.0] — 2026-11-07
 
 ### Agregado

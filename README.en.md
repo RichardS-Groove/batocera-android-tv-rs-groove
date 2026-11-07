@@ -1,6 +1,6 @@
 # Batocera Android TV · RS Groove
 
-![Version](https://img.shields.io/badge/version-1.1.0-7b2cbf)
+![Version](https://img.shields.io/badge/version-1.1.1-7b2cbf)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-e0343d)](LICENSE.md)
 ![Batocera](https://img.shields.io/badge/Batocera-43-e0343d)
 ![Android TV](https://img.shields.io/badge/LineageOS%2021-Android%20TV%2014-3ddc84)
