@@ -65,7 +65,8 @@ leer_json() {
 	done
 }
 
-# Wallhaven. Una línea por imagen: id<TAB>url de la imagen<TAB>tamaño en bytes<TAB>de dónde es (sitio/usuario)
+# Wallhaven. Una línea por imagen: id<TAB>url de la imagen<TAB>tamaño en bytes<TAB>de dónde es (sitio/usuario)<TAB>
+# los dos colores principales («#000000,#333333»)
 leer_wallhaven() {
 	sed 's/},{"id":"/}\
 {"id":"/g' "$1" | while IFS= read -r l; do
@@ -73,8 +74,10 @@ leer_wallhaven() {
 		path=$(printf '%s\n' "$l" | campo '"path":"' | sed 's#\\/#/#g')
 		tam=$(printf '%s\n' "$l" | numero '"file_size":')
 		src=$(printf '%s\n' "$l" | campo '"source":"' | sed 's#\\/#/#g; s#^https*://##; s#^www\.##' | cut -d/ -f1-2)
+		col=$(printf '%s\n' "$l" | awk '{ i = index($0, "\"colors\":["); if (!i) exit; s = substr($0, i + 10)
+			j = index(s, "]"); s = substr(s, 1, j - 1); gsub(/"/, "", s); split(s, a, ","); print a[1] "," a[2]; exit }')
 		[ -n "$id" ] && [ -n "$path" ] || continue
-		printf '%s\t%s\t%s\t%s\n' "$id" "$path" "${tam:-0}" "$src"
+		printf '%s\t%s\t%s\t%s\t%s\n' "$id" "$path" "${tam:-0}" "$src" "$col"
 	done
 }
 
@@ -125,8 +128,10 @@ bajar_wallhaven() {
 		grep -q -F '"path"' "$TMP/w.json" 2>/dev/null || { log "Wallhaven «$q»: sin resultados"; sleep 2; continue; }
 		leer_wallhaven "$TMP/w.json" > "$TMP/wl.txt"
 		k=0
-		while IFS="$TAB" read -r id path tam src; do
+		while IFS="$TAB" read -r id path tam src col; do
 			[ $k -ge "$por" ] && break
+			# Fondo negro (los dos colores principales negros o casi): no, pedido de la persona.
+			case "$col" in "#000000,#000000"|"#000000,#333333"|"#000000,#424153"|"#000000,") continue ;; esac
 			[ "$tam" -gt 0 ] && [ "$tam" -le "$WH_MAX" ] || continue
 			ext=${path##*.}; case "$ext" in jpg|jpeg|png) ;; *) continue ;; esac
 			b="wallhaven-$id.$ext"; f="$TMP/nuevas/$b"

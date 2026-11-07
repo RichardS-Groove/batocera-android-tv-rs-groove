@@ -3,6 +3,22 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versiones: `MAYOR.MENOR.ARREGLO`
 (cambio grande / mejora nueva / arreglo chico).
 
+## [1.3.1] — 2026-11-07
+
+### Agregado
+
+- Receta completa para hacer el cartel de cualquier app en [docs/INICIO.md](docs/INICIO.md) (de dónde sacar
+  el logo, parámetros, vista previa, cómo meterlo en el inicio) y `herramientas/hoja.ps1` para la vista previa.
+
+### Cambiado
+
+- El tema ya no trae los 5 personajes de neón sobre fondo negro (no gustaban): quedan los 3 paisajes de anime.
+- `fondos.sh` saltea las imágenes de Wallhaven con fondo negro (los dos colores principales negros o casi negros).
+
+### Pendiente
+
+- Foto principal del README con un paisaje de anime (la actual muestra uno de los fondos sacados).
+
 ## [1.3.0] — 2026-11-07
 
 ### Agregado

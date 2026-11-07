@@ -1,7 +1,7 @@
 # 🖼️ Fondos nuevos cada día
 
 El inicio RS Groove (CleanYourTV) no tiene permiso de internet: no puede bajar imágenes solo. `fondos.sh` las baja por
-él y las suma a las 8 de anime del tema, que van cambiando cada minuto. Guarda una **reserva de hasta 90 fondos**:
+él y las suma a los 3 paisajes de anime del tema, que van cambiando cada minuto. Guarda una **reserva de hasta 90 fondos**:
 sin internet, siguen pasando esos.
 
 | Fuente | Qué trae | Clave |
@@ -26,7 +26,9 @@ sin internet, siguen pasando esos.
    (45 pedidos por minuto).
 4. **Unsplash:** pide fotos al azar a su API, las baja en 1920×1080, **registra cada descarga** (lo piden sus reglas) y
    respeta el cupo de la clave gratis (50 pedidos por hora: si queda poco, sigue en la vuelta siguiente).
-5. Comprueba que cada archivo sea una imagen de verdad, la pasa al inicio por su proveedor, deja un crédito por fondo
+5. **Sin fondos negros:** saltea las imágenes de Wallhaven cuyos dos colores principales son negros o casi negros
+   (personajes sobre fondo negro); las que solo tienen siluetas oscuras se quedan.
+6. Comprueba que cada archivo sea una imagen de verdad, la pasa al inicio por su proveedor, deja un crédito por fondo
    y vuelve a abrir el inicio si está en pantalla. Sin internet no cambia nada.
 
 Registro: `/data/rsgroove/fondos.log` (la clave nunca se escribe ahí). Créditos: `/data/rsgroove/fondos-creditos.txt`.

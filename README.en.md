@@ -7,7 +7,7 @@
 Pick **Android TV** with the gamepad, the PC boots native Android at full power,<br>
 and when you are done press **Select + Start** to get back to your games.
 
-[![Version](https://img.shields.io/badge/version-1.3.0-7b2cbf?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.3.1-7b2cbf?style=for-the-badge)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-e0343d?style=for-the-badge)](LICENSE.md)
 [![Batocera](https://img.shields.io/badge/Batocera-43-ff6a00?style=for-the-badge)](https://batocera.org)
 [![Android TV](https://img.shields.io/badge/Android%20TV-14-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://sourceforge.net/projects/lineageos-tv-x86/)

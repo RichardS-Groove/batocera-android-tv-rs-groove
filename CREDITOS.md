@@ -12,7 +12,7 @@ piezas de abajo son de sus autores, con sus licencias. No se copian acá: se enl
 | Google Play Store (Android TV) | Google | La tienda de apps. Se baja aparte; no se redistribuye. |
 | [TV Detox](https://github.com/Ansub/tv-detox) | Ansub (MIT) | Inicio usado en el equipo de prueba (foto del README). |
 | [CleanYourTV](https://github.com/Gathin23/cleanyourtv) | Gathin y colaboradores (MIT) | El inicio estilo Apple TV (se arma desde su código, commit `d451b17`). No se redistribuye. |
-| Imágenes del tema RS Groove | Shivamingale3 y Khushmansingh (CC0, hechas con Google Gemini) | Fondos del inicio. Detalle en [tema/rs-groove/CREDITOS.md](tema/rs-groove/CREDITOS.md). |
+| Imágenes del tema RS Groove | Khushmansingh (CC0, hechas con Google Gemini / Imagen) | Fondos del inicio. Detalle en [tema/rs-groove/CREDITOS.md](tema/rs-groove/CREDITOS.md). |
 | [Wallhaven](https://wallhaven.cc) | Cada artista (el inicio muestra de dónde es cada imagen) | Fondos de anime que `fondos.sh` baja para verlos en la tele propia. **No se redistribuyen** ni se suben a este repositorio. |
 | [Unsplash](https://unsplash.com) | Cada fotógrafo ([licencia de Unsplash](https://unsplash.com/license)) | Fotos opcionales que baja `fondos.sh`, con el crédito en pantalla. No se suben a este repositorio. |
 | Google Chrome y Google Drive | Google | Versiones de celular. Se bajan aparte; no se redistribuyen. |
