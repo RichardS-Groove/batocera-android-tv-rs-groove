@@ -92,6 +92,14 @@ llamá al `.bat` con su ruta completa (Windows puede tener apagada la búsqueda 
 
 Con el pendrive de la ISO puesto, el GRUB de Android puede encontrar la marca `/.disk/<…>.uuid` del pendrive. Sacalo.
 
+## Android se conecta a la red de 2,4 GHz y no a la de 5 GHz
+
+Si el router tiene las dos redes guardadas, Android elige la que le llega con más señal, y la de 2,4 GHz suele llegar
+más fuerte aunque sea mucho más lenta (en la notebook de prueba: ~15 Mbit/s con saltos de 120 ms contra ~36 Mbit/s y
+7 ms en 5 GHz). Conectarse **a mano** a la de 5 GHz (Ajustes → Red, o por ADB `cmd wifi connect-network "<red 5 GHz>"
+wpa3 <clave>`; `wpa2` si el router no usa WPA3) la marca como elegida y Android la prefiere. La de 2,4 GHz puede
+quedar guardada como respaldo. Ver la red actual: `cmd wifi status`.
+
 ## La tele queda azul y rayada al entrar a Android TV
 
 Pasaba cuando el cargador recibía `video=eDP-1:d video=HDMI-A-1:1920x1080@60e` (modo «solo la tele»). Desde la v1.4.0

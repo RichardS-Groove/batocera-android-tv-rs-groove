@@ -3,6 +3,12 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versiones: `MAYOR.MENOR.ARREGLO`
 (cambio grande / mejora nueva / arreglo chico).
 
+## [1.4.1] — 2026-11-08
+
+### Documentación
+
+- [Problemas](docs/PROBLEMAS.md): Android elige la red de 2,4 GHz en vez de la de 5 GHz y cómo dejarlo en 5 GHz.
+
 ## [1.4.0] — 2026-11-08
 
 ### Agregado

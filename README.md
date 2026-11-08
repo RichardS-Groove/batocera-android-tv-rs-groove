@@ -7,7 +7,7 @@
 Elegís **Android TV** con el joystick, la PC arranca Android nativo con toda su potencia,<br>
 y cuando terminás apretás **Select + Start** y volvés a tus juegos.
 
-[![Versión](https://img.shields.io/badge/versión-1.4.0-7b2cbf?style=for-the-badge)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versión-1.4.1-7b2cbf?style=for-the-badge)](CHANGELOG.md)
 [![Licencia](https://img.shields.io/badge/licencia-CC%20BY--NC--SA%204.0-e0343d?style=for-the-badge)](LICENSE.md)
 [![Batocera](https://img.shields.io/badge/Batocera-43-ff6a00?style=for-the-badge)](https://batocera.org)
 [![Android TV](https://img.shields.io/badge/Android%20TV-14-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://sourceforge.net/projects/lineageos-tv-x86/)
