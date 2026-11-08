@@ -7,7 +7,7 @@
 Pick **Android TV** with the gamepad, the PC boots native Android at full power,<br>
 and when you are done press **Select + Start** to get back to your games.
 
-[![Version](https://img.shields.io/badge/version-1.4.1-7b2cbf?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.5.0-7b2cbf?style=for-the-badge)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-e0343d?style=for-the-badge)](LICENSE.md)
 [![Batocera](https://img.shields.io/badge/Batocera-43-ff6a00?style=for-the-badge)](https://batocera.org)
 [![Android TV](https://img.shields.io/badge/Android%20TV-14-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://sourceforge.net/projects/lineageos-tv-x86/)
@@ -28,14 +28,16 @@ and when you are done press **Select + Start** to get back to your games.
 | :---: | --- |
 | 🎮 | **Batocera menu entry.** One more «Android TV» system next to your consoles. |
 | 📺 | **Automatic screen.** With the TV connected it moves to the TV by itself, sound over HDMI too, even if you plug it in later; no TV → the laptop screen. |
+| 🌙 | **Turn the TV off to sleep.** With the «fixed TV», switching the TV off and on with its remote no longer freezes Android or restarts the Batocera menu. Android never sleeps either. |
 | ❌ | **Close all.** A home app (or **Select + Circle**) closes every open app, a floating video too. |
 | ↩️ | **Back with Select + Start.** Any reboot also lands back in Batocera. |
 | 🕹️ | **Batocera-style gamepad.** Cross accepts, Circle goes back, Select goes home and the **right stick changes the volume**. |
 | 🖼️ | **RS Groove home.** Apple TV style, with **anime wallpapers that change every minute** and refresh every day, plus an offline reserve. |
+| 🌤️ | **Weather on the home screen.** Top right, from Open-Meteo, no key needed. |
 | 📱 | **Your phone as the remote.** With the Google TV app: D-pad, volume and keyboard. |
 | 🛒 | **Light Google Play.** microG + the TV Play Store for this CPU, no translator. Chrome and Google Drive too. |
 | ⌨️ | **Spanish keyboard.** ñ, accents and @ work on the laptop keyboard. |
-| 🛡️ | **Batocera untouched.** Everything lives apart, so Batocera updates do not remove it. |
+| 🛡️ | **Batocera untouched.** Everything lives apart, so Batocera updates do not remove it. The fixed TV optionally adds a boot hook (`/boot/postshare.sh`). |
 
 ## 📸 Screenshots
 
@@ -88,6 +90,7 @@ Every piece explained (Spanish): **[docs/COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md
 | Use the phone | **Google TV** app → Remote → **Android TV RS Groove** |
 | Close every app (a floating video too) | **Cerrar todo** app or **Select + Circle** |
 | Add or remove home apps | **App library**, after the last row |
+| Turn the TV off to sleep | With the **TV remote**: Android and Batocera keep running as they were |
 
 ## 🧪 Tested on
 

@@ -7,7 +7,7 @@
 Elegís **Android TV** con el joystick, la PC arranca Android nativo con toda su potencia,<br>
 y cuando terminás apretás **Select + Start** y volvés a tus juegos.
 
-[![Versión](https://img.shields.io/badge/versión-1.4.1-7b2cbf?style=for-the-badge)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versión-1.5.0-7b2cbf?style=for-the-badge)](CHANGELOG.md)
 [![Licencia](https://img.shields.io/badge/licencia-CC%20BY--NC--SA%204.0-e0343d?style=for-the-badge)](LICENSE.md)
 [![Batocera](https://img.shields.io/badge/Batocera-43-ff6a00?style=for-the-badge)](https://batocera.org)
 [![Android TV](https://img.shields.io/badge/Android%20TV-14-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://sourceforge.net/projects/lineageos-tv-x86/)
@@ -28,14 +28,16 @@ y cuando terminás apretás **Select + Start** y volvés a tus juegos.
 | :---: | --- |
 | 🎮 | **Entrada en el menú de la Batocera.** Un sistema «Android TV» más, al lado de tus consolas. |
 | 📺 | **Pantalla automática.** Con la tele conectada pasa sola a la tele, con el sonido por HDMI, aunque la enchufes después; sin tele, la pantalla de la notebook. |
+| 🌙 | **Apagá la tele para dormir.** Con la «tele fija», apagarla y prenderla con su control no traba Android ni reinicia el menú de la Batocera. Y Android no se duerme nunca. |
 | ❌ | **Cerrar todo.** Una app del inicio (o **Select + Círculo**) cierra todas las apps abiertas, también un video flotante. |
 | ↩️ | **Volver con Select + Start.** Cualquier reinicio también vuelve solo a la Batocera. |
 | 🕹️ | **El joystick como en la Batocera.** Cruz acepta, Círculo vuelve, Select va al inicio y la **palanca derecha sube y baja el volumen**. |
 | 🖼️ | **Inicio RS Groove.** Estilo Apple TV, con **fondos de anime que cambian cada minuto** y se renuevan cada día. Guarda una reserva para cuando no hay internet. |
+| 🌤️ | **El clima en el inicio.** Arriba a la derecha, con Open-Meteo, sin clave. |
 | 📱 | **Tu celular como control.** Con la app Google TV: flechas, volumen y teclado. |
 | 🛒 | **Google Play liviano.** microG + la Play Store de TV para este procesador, sin traductor. Además Chrome y Google Drive. |
 | ⌨️ | **Teclado en español.** La ñ, los acentos y la @ funcionan en el teclado de la notebook. |
-| 🛡️ | **No toca la Batocera.** Todo vive aparte: las actualizaciones de la Batocera no lo borran. |
+| 🛡️ | **No toca la Batocera.** Todo vive aparte: las actualizaciones de la Batocera no lo borran. La tele fija suma, si querés, un gancho de arranque (`/boot/postshare.sh`). |
 
 ## 📸 Así se ve
 
@@ -88,6 +90,7 @@ Cada pieza, explicada: **[docs/COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md)**.
 | Manejarlo desde el celular | App **Google TV** → Control remoto → **Android TV RS Groove** |
 | Cerrar todas las apps (también un video flotante) | App **Cerrar todo** o **Select + Círculo** |
 | Sumar o sacar apps del inicio | **Biblioteca de aplicaciones**, al final de las filas |
+| Apagar la tele para dormir | Con el **control de la tele**: Android y la Batocera siguen igual al prenderla |
 
 ## 📚 Guías
 

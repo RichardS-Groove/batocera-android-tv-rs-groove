@@ -177,6 +177,22 @@ for f in pantalla.sh cerrar.sh ajustes.conf; do cp "$P/android-tv/data/rsgroove/
 chmod 755 /userdata/android-tv/data/rsgroove/pantalla.sh /userdata/android-tv/data/rsgroove/cerrar.sh
 ```
 
+**Tele fija en la Batocera (v1.5.0):** para apagar y prender la tele sin que la Batocera reinicie el menú. Android ya
+la trae en `pantalla.sh`. Desde la consola de la Batocera:
+
+```sh
+mkdir -p /userdata/system/tele-fija
+cp "$P/batocera/system/tele-fija/"*.sh /userdata/system/tele-fija/
+chmod 755 /userdata/system/tele-fija/*.sh
+mount -o remount,rw /boot
+# Si NO existe /boot/postshare.sh, copiá el del proyecto. Si existe, agregale a mano las dos líneas de «tele fija».
+[ -e /boot/postshare.sh ] || cp "$P/batocera/boot/postshare.sh" /boot/postshare.sh
+mount -o remount,ro /boot
+```
+
+Se aplica en el próximo arranque (o en el momento con `bash /userdata/system/tele-fija/tele-fija.sh`). Comprobar:
+`cat /userdata/system/logs/tele-fija.log`.
+
 La app **«Cerrar todo»** se instala una vez, con Android prendido, desde la PC: `adb install herramientas/cerrar-todo/cerrar-todo.apk`
 (o se arma con `herramientas/cerrar-todo/armar.ps1`, que necesita JDK 21 y el SDK de Android 34).
 

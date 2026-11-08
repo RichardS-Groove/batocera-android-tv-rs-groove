@@ -139,6 +139,32 @@ arranque lo repone y abre el inicio RS Groove: la pregunta se cierra sola.
 App **«Cerrar todo»** (desde el inicio, con el celular o el joystick) o **Select + Círculo**. Para que una app no
 quede flotando: Ajustes → Apps → Acceso especial de apps → Pantalla en pantalla.
 
+## Apagué la tele a la noche y a la mañana estaba «todo apagado»
+
+No era una suspensión: Android siguió prendido toda la noche (el reloj del núcleo no salta en `kmsg.txt` y no hay
+líneas `PM: suspend`). Lo que pasó: al **prender la tele**, Android la volvió a leer mal (pasó a 1024×768) y se trabó
+(`Watchdog: Blocked in monitor WindowManagerService … 66s`). En la Batocera, al prender la tele, el menú se reinicia.
+**Arreglo:** la «tele fija» de la v1.5.0 ([COMO-FUNCIONA.md](COMO-FUNCIONA.md)). Para revisar una noche desde la
+Batocera, sin arrancar Android: `/userdata/android-tv/data/kmsg.txt`, `log.txt` y `rsgroove/*.log`.
+
+## El celular deja de controlar el Android TV (pide el código otra vez)
+
+En el registro: `AtvRemote.TcpClient: Incoming connection from unknown device <IP del celular>`. Android olvidó el
+emparejamiento. **Arreglo:** en la app Google TV, conectarse de nuevo y poner el código que aparece en la tele. Si pasa
+seguido, fijarse si coincide con un apagado de golpe.
+
+## Una app no tiene internet aunque pide el permiso
+
+LineageOS deja **sin red** (política `REJECT_ALL`) a las apps que se instalaron **sin** pedir internet. Si una
+actualización después lo pide, sigue bloqueada: `UnknownHostException` en la app y `blockedReasons=8` en
+`dumpsys connectivity`. Pasó con el inicio cuando se le sumó el clima. **Arreglo** (con `adb root`, solo para esa app):
+
+```sh
+U=$(adb shell stat -c %u /data/data/<paquete>)
+adb shell service call netpolicy 4 i32 $U          # 00040000 = bloqueada
+adb shell service call netpolicy 3 i32 $U i32 262144   # le saca el bloqueo (queda guardado)
+```
+
 ## Pendientes (todavía sin arreglo)
 
 - **Bluetooth de Android** se cae en el Qualcomm QCA9377 (`LE_ADV_FILTER` en el registro).

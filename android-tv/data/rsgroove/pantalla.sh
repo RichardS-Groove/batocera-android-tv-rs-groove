@@ -1,5 +1,6 @@
 #!/system/bin/sh
-# Pantalla automática — Android TV RS Groove (v1.3.1, 07/11/2026). La lanza arranque.sh en cada arranque.
+# Pantalla automática — Android TV RS Groove (v1.4.1, 08/11/2026). La lanza arranque.sh en cada arranque.
+# v1.4.1: log() devuelve 0 (antes «tele fija: …» venía seguido de un «AVISO: no pude dejar la tele fija» falso).
 # Regla de la persona: «si está conectado el HDMI se manda por la tele; si no, por la laptop».
 # Android arranca siempre en la pantalla de la notebook (sin órdenes video= del cargador: con ellas, o apagando la
 # notebook antes de prender la imagen, la tele quedaba azul y rayada). Este vigilante mira cada 2 s y, cuando la tele
@@ -11,6 +12,11 @@
 # Si la tele se desconecta, hace lo mismo al revés (notebook y sus parlantes).
 # Espera a que el cambio dure unos segundos: la tele se conecta y desconecta varias veces al prenderse.
 # Freno: si cambia más de 4 veces en 5 minutos, deja todo como está y lo anota.
+# Tele fija (v1.4.0, pedido de la persona: apaga la tele con su control para dormir y la prende a la mañana, sin mando
+# a mano): con Android ya en la tele, el núcleo toma la tele como SIEMPRE conectada (debugfs force=on) y con sus datos
+# fijos (edid_override). Así, al prender la tele, Android no la vuelve a leer: el 08/11 la leyó mal (1024×768) y se
+# trabó. Datos: los que da la tele en ese momento si son válidos (y se guardan), si no la copia tele-samsung-edid.bin.
+# Consecuencia aceptada: si se desenchufa el cable con Android prendido, la notebook vuelve recién al reiniciar.
 # Uso: pantalla.sh            vigila (lo normal)
 #      pantalla.sh --mirar    solo dice qué haría, sin cambiar nada
 # Registro: /data/rsgroove/pantalla.log
@@ -18,7 +24,7 @@ D=/data/rsgroove
 LOG=$D/pantalla.log
 MIRAR=""; [ "$1" = "--mirar" ] && MIRAR=1
 ahora() { date '+%F %T'; }
-log() { echo "$(ahora) $*" >> $LOG; [ -n "$MIRAR" ] && echo "$*"; }
+log() { echo "$(ahora) $*" >> $LOG; [ -n "$MIRAR" ] && echo "$*"; return 0; }   # 0 siempre: si no, «a && log || log AVISO» anotaba un AVISO falso
 
 HDMI=$(ls -d /sys/class/drm/card*-HDMI-A-1 2>/dev/null | head -1)
 EDP=$(ls -d /sys/class/drm/card*-eDP-1 2>/dev/null | head -1)
@@ -69,7 +75,26 @@ cambiar() {  # $1 = tele | notebook
 	asegurar_sonido
 }
 
-log "vigilante v1.3.1: tele $(cat $HDMI/status), Android en la $(estado)"
+EDID_COPIA=$D/tele-samsung-edid.bin
+fijar_tele() {  # tele «siempre conectada» y con datos fijos (solo con Android ya en la tele)
+	[ -d /sys/kernel/debug/dri ] || mount -t debugfs debugfs /sys/kernel/debug 2>/dev/null
+	F=$(ls -d /sys/kernel/debug/dri/*/HDMI-A-1 2>/dev/null | head -1)
+	[ -n "$F" ] || { log "AVISO: no encuentro debugfs de HDMI-A-1: la tele no queda fija"; return; }
+	[ "$(cat $F/force)" = on ] && return
+	if [ "$(head -c 8 $HDMI/edid 2>/dev/null | od -An -tx1 | tr -d ' \n')" = 00ffffffffffff00 ] \
+		&& [ "$(wc -c < $HDMI/edid)" -ge 128 ]; then
+		cmp -s $HDMI/edid $EDID_COPIA || { cat $HDMI/edid > $EDID_COPIA.nuevo && mv $EDID_COPIA.nuevo $EDID_COPIA; }
+		origen="leídos de la tele"
+	else
+		origen="copia guardada"
+	fi
+	[ -s $EDID_COPIA ] || { log "AVISO: sin datos válidos de la tele: no queda fija"; return; }
+	cat $EDID_COPIA > $F/edid_override && echo on > $F/force \
+		&& log "tele fija: siempre conectada, datos $origen ($(wc -c < $EDID_COPIA) bytes)" \
+		|| log "AVISO: no pude dejar la tele fija"
+}
+
+log "vigilante v1.4.1: tele $(cat $HDMI/status), Android en la $(estado)"
 
 cuenta=0; cambios=""
 while :; do
@@ -77,6 +102,7 @@ while :; do
 	if [ "$quiero" = "$(estado)" ]; then
 		cuenta=0
 		[ -n "$MIRAR" ] && { log "(solo mirar) todo bien: Android ya está en la $quiero"; exit 0; }
+		[ "$quiero" = tele ] && fijar_tele
 	else
 		cuenta=$((cuenta+1))
 		if [ "$cuenta" -ge "$lim" ]; then

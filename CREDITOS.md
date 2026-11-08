@@ -13,7 +13,9 @@ piezas de abajo son de sus autores, con sus licencias. No se copian acá: se enl
 | [TV Detox](https://github.com/Ansub/tv-detox) | Ansub (MIT) | Inicio usado en el equipo de prueba (foto del README). |
 | [CleanYourTV](https://github.com/Gathin23/cleanyourtv) | Gathin y colaboradores (MIT) | El inicio estilo Apple TV (se arma desde su código, commit `d451b17`). No se redistribuye. |
 | Imágenes del tema RS Groove | Khushmansingh (CC0, hechas con Google Gemini / Imagen) | Fondos del inicio. Detalle en [tema/rs-groove/CREDITOS.md](tema/rs-groove/CREDITOS.md). |
-| [Wallhaven](https://wallhaven.cc) | Cada artista (el inicio muestra de dónde es cada imagen) | Fondos de anime que `fondos.sh` baja para verlos en la tele propia. **No se redistribuyen** ni se suben a este repositorio. |
+| `WeatherNow.java` (clima del inicio) | Basado en `Weather.java` del agregado *photo-screensaver* de [CleanYourTV](https://github.com/Gathin23/cleanyourtv) (MIT) | El clima arriba a la derecha (`herramientas/inicio-clima/`). |
+| [Open-Meteo](https://open-meteo.com) | Open-Meteo (datos [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)) | Los datos del clima, sin clave, para uso personal. |
+| [Wallhaven](https://wallhaven.cc) | Cada artista (el crédito en pantalla se apagó en la v1.5.0; la fuente queda en `fondos-creditos.txt`) | Fondos de anime que `fondos.sh` baja para verlos en la tele propia. **No se redistribuyen** ni se suben a este repositorio. |
 | [Unsplash](https://unsplash.com) | Cada fotógrafo ([licencia de Unsplash](https://unsplash.com/license)) | Fotos opcionales que baja `fondos.sh`, con el crédito en pantalla. No se suben a este repositorio. |
 | Google Chrome y Google Drive | Google | Versiones de celular. Se bajan aparte; no se redistribuyen. |
 | [Aurora Store](https://f-droid.org/packages/com.aurora.store/) | Aurora OSS (GPL 3.0) | Tienda alternativa opcional. |

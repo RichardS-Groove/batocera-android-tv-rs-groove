@@ -1,0 +1,49 @@
+diff --git a/launcher/app/src/main/AndroidManifest.xml b/launcher/app/src/main/AndroidManifest.xml
+index ca18afa9..de407c6a 100644
+--- a/launcher/app/src/main/AndroidManifest.xml
++++ b/launcher/app/src/main/AndroidManifest.xml
+@@ -8,6 +8,8 @@
+     <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+ 
+     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
++    <!-- RS Groove: only for the weather top right (WeatherNow, Open-Meteo). -->
++    <uses-permission android:name="android.permission.INTERNET" />
+     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+     <!-- Needed since Android 10 to read the Wi-Fi network name for the network pill. Never requested at
+          runtime: build-and-install grants it with pm grant, so lint's Android 12 "ask for COARSE with
+diff --git a/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java b/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java
+index 76251f1f..9f671238 100644
+--- a/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java
++++ b/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java
+@@ -145,6 +145,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+     private RecyclerView grid;
+     private FrameLayout root;
+     private WallpaperPlayer wallpaperPlayer;
++    private WeatherNow weatherNow;   // RS Groove: the weather top right
+     private GlassView glass;
+     private View ambient;
+     private TextView heroName;
+@@ -508,6 +509,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+         // the theme's background, so launch looks the same.
+         getWindow().setBackgroundDrawable(null);
+         wallpaperPlayer = new WallpaperPlayer(this, root, cfg);
++        weatherNow = new WeatherNow(this, root);
+         sky = findViewById(R.id.sky);
+         sky.setIntensity(cfg.skyIntensity);
+         glass = findViewById(R.id.glass);
+@@ -1134,6 +1136,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+         if (gameDay != null) gameDay.start();
+         sky.update();
+         wallpaperPlayer.start();
++        weatherNow.start();
+         handler.postDelayed(minuteTick, MINUTE_MS);
+         if (festive && lamp != null) {
+             lamp.start();
+@@ -1308,6 +1311,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+         root.removeCallbacks(showIdleClock);
+         endReorder();   // Home or another app while reordering keeps the order so far
+         wallpaperPlayer.stop();
++        weatherNow.stop();
+         stopAmbientAnimation();
+         hero.animate().cancel();
+         ambient.animate().cancel();

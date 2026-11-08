@@ -5,7 +5,7 @@
   "wallpaper": true,
   "wallpaper_rotation_minutes": 1,
   "wallpaper_order": "shuffle",
-  "wallpaper_captions": true,
+  "wallpaper_captions": false,
   "wallpaper_true_color": true,
   "wallpaper_dim": 15,
   "cinematic_home": false,

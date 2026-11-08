@@ -55,6 +55,40 @@ sequenceDiagram
   Si la tele se desconecta 10 s, hace lo mismo al revés. Freno: 4 cambios en 5 minutos.
 - Registro: `/data/rsgroove/pantalla.log`.
 
+## Apagar la tele para dormir: «tele fija» (v1.5.0)
+
+Muchas teles, al prenderse, avisan por el HDMI que se desconectaron y volvieron (~1 s). Sin arreglo:
+
+- **Android** vuelve a leer los datos de la tele (EDID) mientras la tele todavía está despertando, los lee mal
+  («Display identification data has unknown format»), cambia a **1024×768** y la parte de ventanas se traba hasta que
+  su vigilante (`Watchdog`) la reinicia.
+- **La Batocera** reinicia el menú: la regla udev `80-switch-screen.rules` → `batocera-switch-screen-checker` →
+  `curl http://localhost:1234/quit`.
+
+Con la tele fija, el núcleo toma la tele como **siempre conectada** y con **sus datos guardados**, por
+`debugfs` (`/sys/kernel/debug/dri/*/HDMI-A-1/`):
+
+```sh
+cat <datos-de-la-tele.bin> > /sys/kernel/debug/dri/*/HDMI-A-1/edid_override   # EDID fijo
+echo on > /sys/kernel/debug/dri/*/HDMI-A-1/force                               # siempre conectada
+```
+
+- **Android:** `pantalla.sh` lo hace en cuanto Android está en la tele. Usa los datos que da la tele en ese momento si
+  son válidos (cabecera `00 FF FF FF FF FF FF 00`) y los guarda en `/data/rsgroove/tele-samsung-edid.bin`; si no, usa
+  esa copia. Registro: «tele fija: …» en `pantalla.log`.
+- **Batocera:** `/userdata/system/tele-fija/tele-fija.sh`, llamado desde `/boot/postshare.sh` en cada arranque, hace lo
+  mismo **solo si arrancó con la tele conectada**. Además tapa `batocera-switch-screen-checker-delayed` con
+  `aviso-pantalla.sh` (`mount --bind`, se pierde al reiniciar): mientras la tele está fija, el aviso solo vuelve a poner
+  el volumen y anota «Tele fija: aviso de pantalla ignorado» en `display.log`. Registro: `logs/tele-fija.log`.
+- **Lo que se pierde:** si desenchufás el cable con el equipo prendido, la pantalla de la notebook vuelve recién al
+  reiniciar. Al arrancar, la pantalla se sigue eligiendo sola.
+- **Volver atrás:** sacar la llamada de `/boot/postshare.sh` (o la carpeta `tele-fija`) y reiniciar; en Android, la
+  versión 1.3.1 de `pantalla.sh`.
+
+Además, **Android nunca se duerme** (`ajustes.conf`: `secure sleep_timeout -1` y `secure attentive_timeout -1`) y con
+`stay_on_while_plugged_in 1` la pantalla no se apaga (solo baja el brillo a los 15 minutos, cosa que la tele no
+muestra). Esta compilación tampoco suspende el equipo: `write /sys/power/state` falla.
+
 ## Sonido por la tele
 
 El controlador de sonido principal (`audio.primary.x86`) **ignora las salidas HDMI** («ignore pcmC0D3p») salvo con

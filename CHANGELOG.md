@@ -3,6 +3,30 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versiones: `MAYOR.MENOR.ARREGLO`
 (cambio grande / mejora nueva / arreglo chico).
 
+## [1.5.0] — 2026-11-08
+
+### Agregado
+
+- **Tele fija** (`pantalla.sh` 1.4.1 en Android y `batocera/system/tele-fija/` en la Batocera): podés **apagar la tele
+  con su control para dormir** y prenderla a la mañana sin que nada se trabe ni se reinicie. Cuando el sistema ya está
+  en la tele, el núcleo la toma como siempre conectada (`force=on`) y con sus datos fijos (`edid_override`). Antes, al
+  prender la tele, Android la volvía a leer mal (1024×768) y se trababa, y la Batocera reiniciaba el menú.
+- **Clima en el inicio** (`herramientas/inicio-clima/`): arriba a la derecha, «☀ 16° · Capital», con
+  [Open-Meteo](https://open-meteo.com) (sin clave), cada 30 minutos. Usa la ubicación de Android y, si no la hay, la
+  ciudad que pongas en el código.
+- `ajustes.conf`: **Android no se duerme nunca** (`secure sleep_timeout -1`, `secure attentive_timeout -1`; antes
+  dormía a las 24 h sin usar).
+
+### Cambiado
+
+- Tema RS Groove: `wallpaper_captions` en `false` (el crédito de cada fondo dejaba textos raros, como «Arte:#fff»; en
+  su lugar va el clima).
+
+### Documentación
+
+- [Problemas](docs/PROBLEMAS.md): Android trabado o menú reiniciado al prender la tele, el celular que deja de
+  controlar (hay que emparejarlo de nuevo) y apps de LineageOS sin internet aunque tengan el permiso.
+
 ## [1.4.1] — 2026-11-08
 
 ### Documentación

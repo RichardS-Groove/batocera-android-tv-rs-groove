@@ -98,11 +98,34 @@ El inicio anterior (TV Detox o el de LineageOS) queda instalado. Para volver a T
 | `hidden_apps` | KernelSU, el mapeador de teclas, TV Detox | Fuera del inicio (siguen en la Biblioteca) |
 | `columns` | `5` | Apps por fila |
 | `app_banners` | Chrome y Drive | Carteles propios para las apps de celular (ver abajo) |
-| `wallpaper_captions` / `wallpaper_dim` | `true` / `15` | De dónde es cada fondo (artista o fotógrafo) y un oscurecido suave para leer el reloj |
+| `wallpaper_captions` / `wallpaper_dim` | `false` / `15` | Sin el crédito de cada fondo (desde la v1.5.0 ahí va el clima; el crédito dejaba textos raros como «Arte:#fff») y un oscurecido suave para leer el reloj |
 
 El resto viene de la configuración del tema `weeb` de CleanYourTV (barra de vidrio, botones redondos, saludo); sus
 imágenes de personajes en neón sobre fondo negro no se usan. Todas las claves:
 `themes/README.md` de CleanYourTV.
+
+## Clima arriba a la derecha (v1.5.0)
+
+El inicio muestra el clima de ahora donde estaba el crédito del fondo: **«☀  16°  ·  Capital»**. Lo hace
+`herramientas/inicio-clima/WeatherNow.java` (basado en `Weather.java` del agregado *photo-screensaver* de CleanYourTV,
+MIT):
+
+- Datos de [Open-Meteo](https://open-meteo.com), sin clave ni cuenta. Se renueva cada 30 minutos mientras el inicio
+  está a la vista; sin internet queda el último dato (y reintenta a los 5 minutos).
+- Ubicación: la de Android si la sabe (redondeada a ~1 km). Una notebook sin GPS no la sabe, así que usa la ciudad
+  fija del código: `CAPITAL_LAT`, `CAPITAL_LON` y `CAPITAL` (Buenos Aires, «Capital»). Cambialas por las tuyas.
+- El inicio pasa a pedir permiso de internet (solo para esto).
+
+Armarlo (en la PC, con el inicio ya armado como en el paso 1):
+
+```powershell
+Copy-Item herramientas\inicio-clima\WeatherNow.java C:\rsgtv\cleanyourtv\launcher\app\src\main\java\com\gathin\tvhome\
+cd C:\rsgtv\cleanyourtv; git apply <ruta del proyecto>\herramientas\inicio-clima\inicio-clima.patch
+```
+
+Después, compilar e instalar igual que en los pasos 1 y 2. **Si no aparece el clima:** `adb logcat -s WeatherNow`. Si
+dice `UnknownHostException`, LineageOS dejó el inicio sin red porque al instalarlo no pedía internet: ver
+[PROBLEMAS.md](PROBLEMAS.md), «Una app no tiene internet aunque pide el permiso».
 
 ## Carteles para apps de celular (Chrome, Drive)
 
