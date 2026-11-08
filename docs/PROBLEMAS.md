@@ -92,8 +92,46 @@ llamá al `.bat` con su ruta completa (Windows puede tener apagada la búsqueda 
 
 Con el pendrive de la ISO puesto, el GRUB de Android puede encontrar la marca `/.disk/<…>.uuid` del pendrive. Sacalo.
 
+## La tele queda azul y rayada al entrar a Android TV
+
+Pasaba cuando el cargador recibía `video=eDP-1:d video=HDMI-A-1:1920x1080@60e` (modo «solo la tele»). Desde la v1.4.0
+el lanzador no manda esas órdenes: Android arranca en la notebook y `pantalla.sh` lo pasa a la tele. Las entradas
+«solo la tele» del menú de GRUB siguen con `video=`: no usarlas con esta notebook.
+
+## La tele no muestra Android (queda en negro) aunque está enchufada
+
+Si la tele se conecta o se prende **después** de entrar a Android, Android la toma como pantalla secundaria. Lo
+resuelve `pantalla.sh` (v1.4.0). Si la Batocera tampoco ve la tele al arrancar, revisar **el cable HDMI**: uno fallado
+daba puntos de colores, cortes de imagen y la tele «desconectada».
+
+## «Tu formato de video no es compatible» o videos sin sonido
+
+No es el video: Android se quedó sin salida de sonido. Ver «Sonido por la tele» en [Cómo funciona](COMO-FUNCIONA.md)
+(`hal.audio.primary.hdmi=1`). Si el servicio de sonido arrancó antes que el controlador: `setprop ctl.restart audioserver`.
+No hace falta pasar el video al procesador.
+
+## Android lento, como trabado
+
+Calor: con el procesador fijo al máximo (`performance`) llegaba a 90 °C y se frenaba solo (miles de veces por hora;
+`/sys/devices/system/cpu/cpu0/thermal_throttle/package_throttle_count`). `ajustes.conf` lo deja en automático
+(`powersave` + `balance_performance`): 64 °C y sin frenadas. Con la tapa baja disipa peor.
+
+## Mirando un video se reinicia la imagen de Android
+
+Se caía `android.hardware.graphics.allocator@2.0-service` con `Scudo ERROR: internal map failure` (tope de mapeos por
+programa, `vm.max_map_count` = 65530; la RAM sobraba). `ajustes.conf` lo sube a 1048576, como la Steam Deck.
+
+## Pregunta «elegir pantalla de inicio» y se queda ahí
+
+Pasa si Android perdió cuál es el inicio principal (por ejemplo, después de apagarlo con el botón). La revisión de
+arranque lo repone y abre el inicio RS Groove: la pregunta se cierra sola.
+
+## Un video flotante no se puede cerrar
+
+App **«Cerrar todo»** (desde el inicio, con el celular o el joystick) o **Select + Círculo**. Para que una app no
+quede flotando: Ajustes → Apps → Acceso especial de apps → Pantalla en pantalla.
+
 ## Pendientes (todavía sin arreglo)
 
 - **Bluetooth de Android** se cae en el Qualcomm QCA9377 (`LE_ADV_FILTER` en el registro).
-- Si la tele se enchufa con Android ya prendido, falta comprobar si Android la toma sola o hay que reiniciar.
 - Widevine es **L3** en x86: algunas apps de video van en SD.

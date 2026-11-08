@@ -3,6 +3,28 @@
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versiones: `MAYOR.MENOR.ARREGLO`
 (cambio grande / mejora nueva / arreglo chico).
 
+## [1.4.0] — 2026-11-08
+
+### Agregado
+
+- **Pantalla automática de verdad** (`pantalla.sh`): Android arranca en la notebook y, con la tele conectada (también
+  si se enchufa o se prende después), pasa solo a la tele; si se desconecta, vuelve a la notebook.
+- **Sonido por la tele**: `hal.audio.primary.hdmi=1` + `hal.audio.out` = `pcmC0D3p`, con el controlador y el servicio
+  de sonido reiniciados en orden (antes quedaba mudo y las apps decían «formato no compatible»).
+- **«Cerrar todo»**: app propia (`herramientas/cerrar-todo/`, código, armador y APK) + `cerrar.sh`; también
+  **Select + Círculo**. Cierra todas las apps abiertas, incluida la ventanita flotante.
+- `ajustes.conf`: ajustes que la revisión de arranque repone en cada arranque.
+- Revisión de arranque en `arranque.sh` (cierre de la sesión anterior, archivos importantes, ajustes, Wi-Fi sin ahorro
+  de energía) y la pregunta «elegir pantalla de inicio» se cierra sola.
+
+### Cambiado
+
+- El lanzador ya no manda `video=` al cargador (dejaba la tele **azul y rayada**).
+- Procesador en automático (`powersave` + `balance_performance`): fijo al máximo llegaba a 90 °C y se frenaba.
+- `vm.max_map_count` = 1048576: con 65530 el servicio de imágenes se caía mirando videos y reiniciaba la imagen.
+- En el menú de la Batocera, Android TV queda primero, al lado de Favoritos (fabricante «Android»); ficha con texto nuevo.
+- Guías: [Cómo funciona](docs/COMO-FUNCIONA.md), [Instalar](docs/INSTALAR.md) y [Problemas](docs/PROBLEMAS.md).
+
 ## [1.3.1] — 2026-11-07
 
 ### Agregado

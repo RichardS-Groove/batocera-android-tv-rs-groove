@@ -7,7 +7,7 @@
 Elegís **Android TV** con el joystick, la PC arranca Android nativo con toda su potencia,<br>
 y cuando terminás apretás **Select + Start** y volvés a tus juegos.
 
-[![Versión](https://img.shields.io/badge/versión-1.3.1-7b2cbf?style=for-the-badge)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versión-1.4.0-7b2cbf?style=for-the-badge)](CHANGELOG.md)
 [![Licencia](https://img.shields.io/badge/licencia-CC%20BY--NC--SA%204.0-e0343d?style=for-the-badge)](LICENSE.md)
 [![Batocera](https://img.shields.io/badge/Batocera-43-ff6a00?style=for-the-badge)](https://batocera.org)
 [![Android TV](https://img.shields.io/badge/Android%20TV-14-3ddc84?style=for-the-badge&logo=android&logoColor=white)](https://sourceforge.net/projects/lineageos-tv-x86/)
@@ -27,7 +27,8 @@ y cuando terminás apretás **Select + Start** y volvés a tus juegos.
 | | |
 | :---: | --- |
 | 🎮 | **Entrada en el menú de la Batocera.** Un sistema «Android TV» más, al lado de tus consolas. |
-| 📺 | **Pantalla automática.** Con la tele enchufada sale por HDMI; sin tele, por la pantalla de la notebook. |
+| 📺 | **Pantalla automática.** Con la tele conectada pasa sola a la tele, con el sonido por HDMI, aunque la enchufes después; sin tele, la pantalla de la notebook. |
+| ❌ | **Cerrar todo.** Una app del inicio (o **Select + Círculo**) cierra todas las apps abiertas, también un video flotante. |
 | ↩️ | **Volver con Select + Start.** Cualquier reinicio también vuelve solo a la Batocera. |
 | 🕹️ | **El joystick como en la Batocera.** Cruz acepta, Círculo vuelve, Select va al inicio y la **palanca derecha sube y baja el volumen**. |
 | 🖼️ | **Inicio RS Groove.** Estilo Apple TV, con **fondos de anime que cambian cada minuto** y se renuevan cada día. Guarda una reserva para cuando no hay internet. |
@@ -85,6 +86,7 @@ Cada pieza, explicada: **[docs/COMO-FUNCIONA.md](docs/COMO-FUNCIONA.md)**.
 | Ir al inicio | **Select** |
 | Subir o bajar el volumen | **Palanca derecha** arriba o abajo |
 | Manejarlo desde el celular | App **Google TV** → Control remoto → **Android TV RS Groove** |
+| Cerrar todas las apps (también un video flotante) | App **Cerrar todo** o **Select + Círculo** |
 | Sumar o sacar apps del inicio | **Biblioteca de aplicaciones**, al final de las filas |
 
 ## 📚 Guías

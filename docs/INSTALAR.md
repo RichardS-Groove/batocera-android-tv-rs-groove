@@ -172,7 +172,13 @@ cp "$P/android-tv/scripts/9-rsgroove" /userdata/android-tv/scripts/
 mkdir -p /userdata/android-tv/data/rsgroove
 cp "$P/android-tv/data/rsgroove/arranque.sh" /userdata/android-tv/data/rsgroove/
 chmod 755 /userdata/android-tv/data/rsgroove/arranque.sh
+# pantalla automática, cerrar todo y ajustes (desde la v1.4.0)
+for f in pantalla.sh cerrar.sh ajustes.conf; do cp "$P/android-tv/data/rsgroove/$f" /userdata/android-tv/data/rsgroove/; done
+chmod 755 /userdata/android-tv/data/rsgroove/pantalla.sh /userdata/android-tv/data/rsgroove/cerrar.sh
 ```
+
+La app **«Cerrar todo»** se instala una vez, con Android prendido, desde la PC: `adb install herramientas/cerrar-todo/cerrar-todo.apk`
+(o se arma con `herramientas/cerrar-todo/armar.ps1`, que necesita JDK 21 y el SDK de Android 34).
 
 La copia del `init.sh` original desde el `system.img` montado en la Batocera está **(sin probar)**: en el equipo de
 prueba se sacó con `adb pull /system/etc/init.sh` antes de montar el nuestro. `generar-init.sh` sí está probado: da un
@@ -183,7 +189,11 @@ archivo idéntico, byte por byte, al que funciona.
 1. pone `BootNext` = la primera entrada del orden UEFI (la Batocera), así cualquier reinicio vuelve a la Batocera;
 2. espera a que Android termine de arrancar y prende ADB por red en el puerto `5555`;
 3. escucha el joystick: **Select + Start** juntos → reinicia → vuelve la Batocera;
-4. **palanca derecha** arriba o abajo → sube o baja el volumen (sostenida, repite unas 4 a 5 veces por segundo).
+4. **palanca derecha** arriba o abajo → sube o baja el volumen (sostenida, repite unas 4 a 5 veces por segundo);
+5. revisión de arranque: carga `ajustes.conf`, repone archivos importantes y deja el inicio RS Groove como principal
+   (si quedó en pantalla la pregunta «elegir pantalla de inicio», la cierra sola);
+6. lanza `pantalla.sh` (pasa Android a la tele cuando está conectada) y `cerrar.sh` (la app «Cerrar todo» y
+   **Select + Círculo**).
 
 Registro: `/userdata/android-tv/data/rsgroove/arranque.log`.
 

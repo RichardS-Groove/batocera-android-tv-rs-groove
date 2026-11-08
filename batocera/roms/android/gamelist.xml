@@ -3,7 +3,8 @@
 	<game>
 		<path>./Android TV.sh</path>
 		<name>Android TV</name>
-		<desc>Reinicia la notebook en Android TV (LineageOS 21 Android TV). Para volver a la Batocera, reiniciá desde Android.</desc>
+		<desc>Reinicia la notebook en Android TV RS Groove (LineageOS 21 Android TV). Con la tele conectada pasa sola a la tele. Para volver a tus juegos, apretá Select + Start.</desc>
+		<developer>Richard Campos (RS Groove)</developer>
 		<genre>Sistema</genre>
 	</game>
 </gameList>
